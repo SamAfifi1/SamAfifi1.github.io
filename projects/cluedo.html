@@ -8,17 +8,65 @@
 <main class="wrap">
 <a class="back" href="../index.html">← All projects</a>
 <h1>Entropy Cluedo Agent</h1>
-<p class="lead">[Two-sentence summary: what it does and how well it works.]</p>
-<div class="btns"><a class="btn p" href="https://github.com/YOUR-USERNAME/REPO-NAME">View code on GitHub</a><a class="btn" href="#">Live demo (delete if none)</a></div>
-<div class="tags"><span class="tag">Python</span><span class="tag">Information theory</span><span class="tag">Probabilistic reasoning</span></div>
-<!-- Replace the box below with: <img class="hero" src="../assets/cluedo-1.png" alt="Describe the image"> -->
-<div class="ph">[Main screenshot, GIF or demo video]</div>
-<div class="two"><div class="box"><h3>The problem</h3><p>[What problem does this solve, and why does it matter?]</p></div>
-<div class="box"><h3>My role</h3><p>[What you personally built. Say if it was a team project.]</p></div></div>
+<p class="lead">A Cluedo-playing AI that picks each suggestion by how many bits of uncertainty it expects to remove, tested against four weaker agents over thousands of simulated games.</p>
+<div class="btns"><a class="btn p" href="https://github.com/YOUR-USERNAME/REPO-NAME">View code on GitHub</a><a class="btn" href="#">Watch the demo (add link)</a></div>
+<div class="tags"><span class="tag">Python</span><span class="tag">Information theory</span><span class="tag">Constraint propagation</span><span class="tag">Symmetry reduction</span><span class="tag">Experimental design</span><span class="tag">OOP</span></div>
+<div class="stats">
+<div class="stat"><b>10.7</b><span>mean turns to win in self-play, the lowest of five agents</span></div>
+<div class="stat"><b>50.2%</b><span>win rate as 1 entropy agent against 3 deductive agents (25% is an even share)</span></div>
+<div class="stat"><b>1,000</b><span>games per configuration, with seat rotation</span></div>
+<div class="stat"><b>~1 s</b><span>per entropy turn after optimisation, down from tens of seconds</span></div></div>
+
+<h2>The problem</h2>
+<p>Cluedo is a game of hidden information: you have to work out the three cards in the envelope from the limited feedback you get when other players answer your suggestions. Existing Cluedo AI is good at <em>inference</em> (ruling out impossible card layouts), but usually picks <em>which suggestion to make</em> with simple rules, such as only suggesting cards it hasn't seen. Some suggestions teach you far more than others. This project asks whether choosing suggestions by expected information gain makes an agent play better.</p>
+
+<h2>What I built</h2>
+<div class="two">
+<div class="box"><h3>A game engine</h3><p>A deterministic four-player Cluedo simulator using a balanced 15-card set (5 suspects, 5 weapons, 5 rooms) to remove the advantage that standard Cluedo's extra rooms give. Agents plug in through a shared abstract base class, so any agent can be swapped into any game.</p></div>
+<div class="box"><h3>Five agents of increasing strength</h3><p><b>Random</b>, <b>Heuristic</b> (only suggests unseen cards), <b>Deductive</b> (adds inference), <b>Disjunctive</b> (adds "has at least one of A, B or C" constraints) and the <b>Entropy agent</b>, which scores every candidate suggestion.</p></div>
+<div class="box"><h3>An experiment framework</h3><p>A three-tier tournament (self-play, 2v2 head-to-head, 1v3 champion-vs-field) run for 1,000 games per configuration, with an analysis pipeline that generates the results below.</p></div></div>
+
+<h2>How the entropy agent works</h2>
+<p>The agent keeps track of which cards each player could hold, and enumerates every card layout still consistent with what it has seen. For each candidate suggestion it then calculates the <b>mutual information</b> between the envelope's contents and the response it expects (who refutes it, and with which card). That is the expected number of bits of envelope uncertainty the suggestion will remove, and the agent plays the highest-scoring one.</p>
+<p>Enumerating every layout is too slow to be practical, so I grouped cards with identical "information profiles" into <b>equivalence classes</b> (cards that are interchangeable given what is known). The agent enumerates and scores at the class level instead of the card level. This is a large saving early in the game, when most cards are equivalent, and it brought entropy turns from tens of seconds to about a second.</p>
+<pre>def _card_fingerprint(self, card):
+    column = tuple(self.can_have[loc][card]
+                   for loc in range(GameConfig.N_PLAYERS + 1))
+    in_constraints = tuple(
+        i for i, (loc, cards) in enumerate(self.constraints)
+        if card in cards)
+    return (column, in_constraints)</pre>
+<p class="cap">Two cards with the same fingerprint are interchangeable, so only one needs evaluating.</p>
+
+<h2>Results</h2>
+<h3>Self-play: how fast does each agent find the answer?</h3>
+<p class="cap" style="margin-top:0">Mean turns to win, four copies of the same agent, 1,000 games each. Lower is better.</p>
+<div class="bars"><div class="bar"><span>Random</span><i style="width:100.0%"></i><b>100.7</b></div><div class="bar"><span>Heuristic</span><i style="width:39.5%"></i><b>39.8</b></div><div class="bar"><span>Deductive</span><i style="width:15.9%"></i><b>16.0</b></div><div class="bar"><span>Disjunctive</span><i style="width:13.8%"></i><b>13.9</b></div><div class="bar hl"><span>Entropy</span><i style="width:10.6%"></i><b>10.7</b></div></div>
+<h3>Head to head (2v2) and against a field (1v3)</h3>
+<table><tr><th>Matchup</th><th>Result</th></tr>
+<tr><td>Random and heuristic agents vs any inference agent</td><td>Beaten in 100% of games</td></tr>
+<tr><td>Disjunctive vs Deductive (2v2)</td><td>68.8% win rate</td></tr>
+<tr><td>Entropy vs Deductive (2v2)</td><td>67.7% win rate</td></tr>
+<tr><td>Entropy vs Disjunctive (2v2)</td><td>51.5% win rate (too close to call at n=1,000)</td></tr>
+<tr><td>1 Entropy vs 3 Deductive</td><td>Entropy 50.2%, compared with Disjunctive 42.7% in the same setup</td></tr>
+<tr><td>1 Entropy vs 3 Disjunctive</td><td>Entropy 31.1%, above its 25% even share</td></tr></table>
+<p>The entropy agent finds the solution fastest and wins most often when it plays alone against three opponents. In 2v2 games its advantage over the disjunctive agent is small. I treat that as inconclusive rather than a win.</p>
+
 <h2>Challenges and decisions</h2>
-<div class="box"><ul><li>[Challenge, what you tried, what you chose and why]</li><li>[Challenge 2]</li><li>[Results: numbers, test outcomes, what you'd do next]</li></ul></div>
+<div class="box"><ul>
+<li><b>Replacing the constraint library.</b> The python-constraint library was too slow: single turns on scaled-down games took minutes. I wrote a custom matrix representation with Cluedo-specific propagation rules, bringing the inference agents to around 0.002 ms per turn and making large simulations feasible.</li>
+<li><b>Making entropy tractable.</b> Symmetry reduction through equivalence classes, plus restricting candidate suggestions to cards that could still be in the envelope, made 1,000-game experiments practical.</li>
+<li><b>Fair experiments.</b> The balanced 15-card set, seat rotation to remove first-turn advantage, and several opponent types so results weren't inflated by beating weak baselines.</li>
+<li><b>Splitting the methodology.</b> A waterfall approach for the rule-bound engine and an iterative one for the agents, whose performance needed constant experimentation.</li></ul></div>
+
+<h2>What I found, and what I'd do next</h2>
+<p>If the entropy agent chooses more informative suggestions, why doesn't its edge show up as clearly in 2v2 games? My hypothesis is that suggestions are semi-public: other agents learn from them too, so in information-rich games the quality of inference matters more than the quality of suggestions. The seat-order data supports this. When the entropy agent faced three disjunctive agents, the one sitting immediately after it won 29.2% of games, against 19.2% and 20.5% for the other two seats.</p>
+<div class="box"><ul>
+<li>The entropy agent is much slower than the others, so it may not be worth it for real-time play, and exhaustive enumeration won't scale to bigger games.</li>
+<li>Next steps: sample worlds rather than enumerating all of them, move the heavy enumeration into a compiled language, and try risk-aware or game-theoretic suggestions that gain information without leaking it to opponents.</li></ul></div>
+
 <h2>Skills this shows</h2>
-<div class="box"><p>[One sentence linking the tech above to what an employer wants.]</p></div>
+<div class="box"><p>Designing and testing AI under uncertainty, applying research ideas (constraint propagation, entropy, symmetry reduction) in working code, profiling and optimising a bottleneck, clean separation of engine and agents with an abstract base class, and running a controlled statistical evaluation and reporting the mixed results honestly.</p></div>
 </main>
 <footer><div class="wrap">your.email@example.com · <a href="https://github.com/YOUR-USERNAME">GitHub</a> · <a href="https://linkedin.com/in/YOUR-NAME">LinkedIn</a> · <a href="../assets/cv.pdf">CV (PDF)</a></div></footer>
 </body></html>
