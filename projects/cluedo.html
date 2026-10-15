@@ -10,14 +10,38 @@
 
 
 <h1>Entropy Cluedo Agent</h1>
-<p class="lead">A Cluedo-playing AI that picks each suggestion by how many bits of uncertainty it expects to remove, tested against four weaker agents over thousands of simulated games.</p>
-<div class="btns"><a class="btn p" href="https://github.com/YOUR-USERNAME/REPO-NAME">View code on GitHub</a><a class="btn" href="#">Watch the demo (add link)</a></div>
-<div class="tags"><span class="tag">Python</span><span class="tag">Information theory</span><span class="tag">Constraint propagation</span><span class="tag">Symmetry reduction</span><span class="tag">Experimental design</span><span class="tag">OOP</span></div>
-<h2>The problem</h2><p>Cluedo is a game of hidden information, and existing AI usually picks its moves with simple rules. This project asks whether choosing each suggestion by <b>expected information gain</b> makes an agent play better, and tests that against four weaker agents.</p>
-<h2>What I built</h2><div class="two">
-<div class="box"><h3>A game engine</h3><p>A deterministic four-player Cluedo simulator using a balanced 15-card set (5 suspects, 5 weapons, 5 rooms) to remove the advantage that standard Cluedo's extra rooms give. Agents plug in through a shared abstract base class, so any agent can be swapped into any game.</p></div>
-<div class="box"><h3>Five agents of increasing strength</h3><p><b>Random</b>, <b>Heuristic</b> (only suggests unseen cards), <b>Deductive</b> (adds inference), <b>Disjunctive</b> (adds "has at least one of A, B or C" constraints) and the <b>Entropy agent</b>, which scores every candidate suggestion.</p></div>
-<div class="box"><h3>An experiment framework</h3><p>A three-tier tournament (self-play, 2v2 head-to-head, 1v3 champion-vs-field) run for 1,000 games per configuration, with an analysis pipeline that generates the results below.</p></div></div>
+<p class="lead">A Cluedo-playing agent that picks suggestions using information theory. Candidate suggestions are ranked by entropy (expected reduction in uncertainty about the hidden cards). Deductive inference using constraint propagation techniques is used to combine partial information into a coherent game state. The agent was tested against four weaker agents over thousands of simulated games.</p>
+
+<div class="btns">
+    <a class="btn p" href="https://github.com/YOUR-USERNAME/REPO-NAME">View code on GitHub</a>
+</div>
+
+<div class="tags">
+    <span class="tag">Python</span>
+    <span class="tag">Information theory</span>
+    <span class="tag">Constraint propagation</span>
+    <span class="tag">Symmetry reduction</span>
+    <span class="tag">Experimental design</span>
+</div>
+
+<h2>The problem</h2>
+<p>Cluedo is a game of hidden information, and existing AI usually picks its moves with simple rules. This project asks whether choosing each suggestion by <b>expected information gain</b> makes an agent play better, and tests that against four weaker agents.</p>
+
+<h2>What I built</h2>
+<div class="two">
+    <div class="box">
+        <h3>A game engine</h3>
+        <p>A deterministic four-player Cluedo simulator using a balanced 15-card set (5 suspects, 5 weapons, 5 rooms) to remove the advantage that standard Cluedo's extra rooms give. Agents plug in through a shared abstract base class, so any agent can be swapped into any game.</p>
+    </div>
+    <div class="box">
+        <h3>Five agents of increasing strength</h3>
+        <p><b>Random</b>, <b>Heuristic</b> (only suggests unseen cards), <b>Deductive</b> (adds inference), <b>Disjunctive</b> (adds "has at least one of A, B or C" constraints) and the <b>Entropy agent</b>, which scores every candidate suggestion.</p>
+    </div>
+    <div class="box">
+        <h3>An experiment framework</h3>
+        <p>A three-tier tournament (self-play, 2v2 head-to-head, 1v3 champion-vs-field) run for 1,000 games per configuration, with an analysis pipeline that generates the results below.</p>
+    </div>
+</div>
 
 <style>.box li b{color:var(--ink)}.box li{margin-bottom:6px}.box li:last-child{margin-bottom:0}</style>
 
