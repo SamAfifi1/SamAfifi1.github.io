@@ -25,18 +25,28 @@
 </div>
 
 <h2>The problem</h2>
-<p>Cluedo is a game of hidden information, and existing AI usually picks its moves with simple rules. This project asks whether choosing each suggestion by <b>expected information gain</b> makes an agent play better, and tests that against four weaker agents.</p>
+<!-- **************************************************************************************************************************-->
 
 <h2>What I built</h2>
 <div class="two">
     <div class="box">
         <h3>A game engine</h3>
-        <p>A deterministic four-player Cluedo simulator using a balanced 15-card set (5 suspects, 5 weapons, 5 rooms) to remove the advantage that standard Cluedo's extra rooms give. Agents plug in through a shared abstract base class, so any agent can be swapped into any game.</p>
+        <p>A deterministic four-player Cluedo simulator using a balanced 15-card set (5 suspects, weapons & rooms). 
     </div>
     <div class="box">
         <h3>Five agents of increasing strength</h3>
-        <p><b>Random</b>, <b>Heuristic</b> (only suggests unseen cards), <b>Deductive</b> (adds inference), <b>Disjunctive</b> (adds "has at least one of A, B or C" constraints) and the <b>Entropy agent</b>, which scores every candidate suggestion.</p>
+        <p>
+            <ul>
+                <li><b>Random</b></li>
+                <li><b>Heuristic</b> (suggests unseen cards)</li> 
+                <li><b>Deductive</b> (adds inference)</li>
+                <li><b>Disjunctive</b> (adds "has at least one of A, B or C" constraints) </li>
+                <li><b>Entropy agent</b> scores candidate suggestions on entropy.</li>
+            </ul>
+        </p>
     </div>
+
+    
     <div class="box">
         <h3>An experiment framework</h3>
         <p>A three-tier tournament (self-play, 2v2 head-to-head, 1v3 champion-vs-field) run for 1,000 games per configuration, with an analysis pipeline that generates the results below.</p>
