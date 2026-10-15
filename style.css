@@ -12,7 +12,7 @@ nav a:hover{color:var(--ink)}
 nav .brand{margin:0;color:var(--ink);font-weight:800;font-size:18px}
 h1{font-size:clamp(32px,6vw,48px);line-height:1.1;margin:44px 0 12px;font-weight:800;letter-spacing:-.02em}
 h2{font-size:24px;margin:36px 0 10px}
-.lead{font-size:19px;color:var(--mute);max-width:56ch;margin:0 0 20px}
+.lead{font-size:14px;color:var(--mute);max-width:56ch;margin:0 0 20px}
 .btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
 .btn{padding:9px 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
 .btn.p{background:var(--acc);border-color:var(--acc);color:#fff}
