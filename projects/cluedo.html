@@ -146,8 +146,8 @@
         </marker>
     </defs>
     <text x="170" y="26" fill="var(--mute)" font-size="11" font-weight="600">AGENTS, WEAKEST TO STRONGEST</text>
-    <text x="575.0" y="16" text-anchor="middle" fill="var(--mute)" font-size="11" font-weight="600">MEAN TURNS</text>
-    <text x="575.0" y="30" text-anchor="middle" fill="var(--mute)" font-size="11" font-weight="600">TO WIN</text>
+    <text x="575.0" y="16" text-anchor="middle" fill="var(--mute)" font-size="11" font-weight="600">MEAN TURNS TO WIN </text>
+    <text x="575.0" y="30" text-anchor="middle" fill="var(--mute)" font-size="11" font-weight="600">(self play)</text>
     <rect x="10" y="164.0" width="120" height="84" rx="8" fill="var(--card)" stroke="var(--line)"/>
     <text x="70" y="200.0" text-anchor="middle" font-weight="600" fill="currentColor">BaseAgent</text>
     <text x="70" y="219.0" text-anchor="middle" fill="var(--mute)" font-size="12">abstract base</text>
@@ -194,8 +194,19 @@
 
 
 <h2>How the entropy agent works</h2>
-<p>The agent keeps track of which cards each player could hold, and enumerates every card layout still consistent with what it has seen. For each candidate suggestion it then calculates the <b>mutual information</b> between the envelope's contents and the response it expects (who refutes it, and with which card). That is the expected number of bits of envelope uncertainty the suggestion will remove, and the agent plays the highest-scoring one.</p>
-<p>Enumerating every layout is too slow to be practical, so I grouped cards with identical "information profiles" into <b>equivalence classes</b> (cards that are interchangeable given what is known). The agent enumerates and scores at the class level instead of the card level. This is a large saving early in the game, when most cards are equivalent, and it brought entropy turns from tens of seconds down to about 80 ms on average (the slowest self-play turn was 1.9 s).</p>
+<p>For each candidate suggestion, the agent evaluates the possible responses given what each player could still hold, and how that response would change the set of solutions still consistent with its knowledge. 
+    It then selects the suggestion expected to reduce the remaining uncertainty the most, leading to the fastest average convergence to a solution.
+</p>
+
+<p>Checking every possible arrangement of the hidden cards is too slow to be practical, so I grouped cards with identical information profiles into <b>equivalence classes</b>.
+ Two cards are interchangeable if the agent has learned exactly the same things about both, as the inherent value of learning any individual card is equal. The agent can then score one card per group instead of every card.
+This is a large saving early in the game, when most cards look identical (no or limited information), and it brought entropy turns from tens of seconds down to approx. 80ms on average.
+
+whilst this effect is reduced later in the game, when there are more discrete information profiles,
+ the reduction in state space caused by known information and constraint propagation mitigates this by reducing the overall search space (speeding up the time taken to evaluate each suggestion).</p>
+
+
+
 <pre>def _card_fingerprint(self, card):
     column = tuple(self.can_have[loc][card]
                    for loc in range(GameConfig.N_PLAYERS + 1))
