@@ -99,7 +99,41 @@
 
 <h2>Technical detail</h2>
 
-<h3>How it fits together</h3><p>The engine owns all the rules and the hidden cards. Agents only ever see what a real player would: who couldn't answer a suggestion, who showed a card to whom, and, for everyone else, that a player holds <em>at least one</em> of the three suggested cards. Every agent inherits from one abstract base class, so any mix of agents can be dropped into any game without touching the engine.</p><svg viewBox="0 0 640 270" width="100%" role="img" style="max-width:680px;color:var(--ink)" font-size="13"><defs><marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--mute)"/></marker></defs><rect x="10" y="20" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/><text x="95.0" y="42" text-anchor="middle" font-weight="600" fill="currentColor">Experiment driver</text><text x="95.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">rotates seats, runs 1,000 games</text><rect x="235" y="20" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/><text x="320.0" y="42" text-anchor="middle" font-weight="600" fill="currentColor">Game engine</text><text x="320.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">deals, resolves suggestions</text><rect x="460" y="10" width="170" height="110" rx="8" fill="var(--card)" stroke="var(--line)"/><text x="545.0" y="32" text-anchor="middle" font-weight="600" fill="currentColor">BaseAgent (abstract)</text><text x="545.0" y="52" text-anchor="middle" fill="var(--mute)" font-size="12">Random · Heuristic · Deductive</text><text x="545" y="86" text-anchor="middle" fill="var(--mute)" font-size="12">Disjunctive · Entropy</text><line x1="180" y1="52" x2="233" y2="52" stroke="var(--mute)" marker-end="url(#ar)"/><line x1="405" y1="40" x2="458" y2="40" stroke="var(--mute)" marker-end="url(#ar)"/><text x="432" y="32" text-anchor="middle" fill="var(--mute)" font-size="11">sees</text><line x1="458" y1="72" x2="407" y2="72" stroke="var(--mute)" marker-end="url(#ar)"/><text x="432" y="90" text-anchor="middle" fill="var(--mute)" font-size="11">acts</text><text x="545" y="145" text-anchor="middle" fill="var(--mute)" font-size="12">sees: player_has, player_doesnt_have, player_has_one_of</text><text x="545" y="163" text-anchor="middle" fill="var(--mute)" font-size="12">acts: choose_action → suggest or accuse</text><line x1="95" y1="84" x2="95" y2="190" stroke="var(--mute)" marker-end="url(#ar)"/><rect x="10" y="192" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/><text x="95.0" y="214" text-anchor="middle" font-weight="600" fill="currentColor">games.csv</text><text x="95.0" y="234" text-anchor="middle" fill="var(--mute)" font-size="12">one row per seat per game</text><line x1="180" y1="224" x2="233" y2="224" stroke="var(--mute)" marker-end="url(#ar)"/><rect x="235" y="192" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/><text x="320.0" y="214" text-anchor="middle" font-weight="600" fill="currentColor">Analysis scripts</text><text x="320.0" y="234" text-anchor="middle" fill="var(--mute)" font-size="12">tables, win rates, seat effect</text></svg><h2>How the entropy agent works</h2>
+<h3>How it fits together</h3>
+<p>The engine owns all the rules and the hidden cards. Agents only ever see what a real player would: who couldn't answer a suggestion, who showed a card to whom, and, for everyone else, that a player holds <em>at least one</em> of the three suggested cards. Every agent inherits from one abstract base class, so any mix of agents can be dropped into any game without touching the engine.</p>
+<svg viewBox="0 0 640 270" width="100%" role="img" style="max-width:680px;color:var(--ink)" font-size="13">
+    <defs>
+        <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0 0L8 4L0 8z" fill="var(--mute)"/>
+        </marker>
+    </defs>
+    <rect x="10" y="20" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
+    <text x="95.0" y="42" text-anchor="middle" font-weight="600" fill="currentColor">Experiment driver</text>
+    <text x="95.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">rotates seats, runs 1,000 games</text>
+    <rect x="235" y="20" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
+    <text x="320.0" y="42" text-anchor="middle" font-weight="600" fill="currentColor">Game engine</text>
+    <text x="320.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">deals, resolves suggestions</text>
+    <rect x="460" y="10" width="170" height="110" rx="8" fill="var(--card)" stroke="var(--line)"/>
+    <text x="545.0" y="32" text-anchor="middle" font-weight="600" fill="currentColor">BaseAgent (abstract)</text>
+    <text x="545.0" y="52" text-anchor="middle" fill="var(--mute)" font-size="12">Random · Heuristic · Deductive</text>
+    <text x="545" y="86" text-anchor="middle" fill="var(--mute)" font-size="12">Disjunctive · Entropy</text>
+    <line x1="180" y1="52" x2="233" y2="52" stroke="var(--mute)" marker-end="url(#ar)"/>
+    <line x1="405" y1="40" x2="458" y2="40" stroke="var(--mute)" marker-end="url(#ar)"/>
+    <text x="432" y="32" text-anchor="middle" fill="var(--mute)" font-size="11">sees</text>
+    <line x1="458" y1="72" x2="407" y2="72" stroke="var(--mute)" marker-end="url(#ar)"/>
+    <text x="432" y="90" text-anchor="middle" fill="var(--mute)" font-size="11">acts</text>
+    <line x1="95" y1="84" x2="95" y2="190" stroke="var(--mute)" marker-end="url(#ar)"/>
+    <rect x="10" y="192" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
+    <text x="95.0" y="214" text-anchor="middle" font-weight="600" fill="currentColor">games.csv</text>
+    <text x="95.0" y="234" text-anchor="middle" fill="var(--mute)" font-size="12">one row per seat per game</text>
+    <line x1="180" y1="224" x2="233" y2="224" stroke="var(--mute)" marker-end="url(#ar)"/>
+    <rect x="235" y="192" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
+    <text x="320.0" y="214" text-anchor="middle" font-weight="600" fill="currentColor">Analysis scripts</text>
+    <text x="320.0" y="234" text-anchor="middle" fill="var(--mute)" font-size="12">tables, win rates, seat effect</text>
+</svg>
+
+
+<h2>How the entropy agent works</h2>
 <p>The agent keeps track of which cards each player could hold, and enumerates every card layout still consistent with what it has seen. For each candidate suggestion it then calculates the <b>mutual information</b> between the envelope's contents and the response it expects (who refutes it, and with which card). That is the expected number of bits of envelope uncertainty the suggestion will remove, and the agent plays the highest-scoring one.</p>
 <p>Enumerating every layout is too slow to be practical, so I grouped cards with identical "information profiles" into <b>equivalence classes</b> (cards that are interchangeable given what is known). The agent enumerates and scores at the class level instead of the card level. This is a large saving early in the game, when most cards are equivalent, and it brought entropy turns from tens of seconds down to about 80 ms on average (the slowest self-play turn was 1.9 s).</p>
 <pre>def _card_fingerprint(self, card):
