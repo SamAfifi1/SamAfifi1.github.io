@@ -100,7 +100,6 @@
 <h2>Technical detail</h2>
 
 <h3>How it fits together</h3>
-<p>The engine owns all the rules and the hidden cards. Agents only ever see what a real player would: who couldn't answer a suggestion, who showed a card to whom, and, for everyone else, that a player holds <em>at least one</em> of the three suggested cards. Every agent inherits from one abstract base class, so any mix of agents can be dropped into any game without touching the engine.</p>
 <svg viewBox="0 0 640 270" width="100%" role="img" style="max-width:680px;color:var(--ink)" font-size="13">
     <defs>
         <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
@@ -115,7 +114,7 @@
     <text x="320.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">deals, resolves suggestions</text>
     <rect x="460" y="20" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
     <text x="545.0" y="42" text-anchor="middle" font-weight="600" fill="currentColor">BaseAgent</text>
-    <text x="545.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">abstract base class for agents</text>
+    <text x="545.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">abstract base class, allowing agents to be used interchangeably</text>
     <line x1="180" y1="52" x2="233" y2="52" stroke="var(--mute)" marker-end="url(#ar)"/>
     <line x1="405" y1="40" x2="458" y2="40" stroke="var(--mute)" marker-end="url(#ar)"/>
     <text x="432" y="32" text-anchor="middle" fill="var(--mute)" font-size="11">sees</text>
@@ -124,11 +123,58 @@
     <line x1="95" y1="84" x2="95" y2="190" stroke="var(--mute)" marker-end="url(#ar)"/>
     <rect x="10" y="192" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
     <text x="95.0" y="214" text-anchor="middle" font-weight="600" fill="currentColor">games.csv</text>
-    <text x="95.0" y="234" text-anchor="middle" fill="var(--mute)" font-size="12">one row per seat per game</text>
+    <text x="95.0" y="234" text-anchor="middle" fill="var(--mute)" font-size="12">stores experiment results</text>
     <line x1="180" y1="224" x2="233" y2="224" stroke="var(--mute)" marker-end="url(#ar)"/>
     <rect x="235" y="192" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
     <text x="320.0" y="214" text-anchor="middle" font-weight="600" fill="currentColor">Analysis scripts</text>
     <text x="320.0" y="234" text-anchor="middle" fill="var(--mute)" font-size="12">tables, win rates, seat effect</text>
+</svg>
+
+<svg viewBox="0 0 640 380" width="100%" role="img" aria-label="BaseAgent connects to five agents, each adding one capability to the one before, with mean turns to solution in self-play" style="max-width:680px;color:var(--ink)" font-size="13">
+    <defs>
+        <marker id="ar2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0 0L8 4L0 8z" fill="var(--mute)"/>
+        </marker>
+    </defs>
+    <text x="170" y="26" fill="var(--mute)" font-size="11" font-weight="600">AGENTS, WEAKEST TO STRONGEST</text>
+    <text x="575.0" y="16" text-anchor="middle" fill="var(--mute)" font-size="11" font-weight="600">MEAN TURNS</text>
+    <text x="575.0" y="30" text-anchor="middle" fill="var(--mute)" font-size="11" font-weight="600">TO SOLUTION</text>
+    <rect x="10" y="164.0" width="120" height="84" rx="8" fill="var(--card)" stroke="var(--line)"/>
+    <text x="70" y="200.0" text-anchor="middle" font-weight="600" fill="currentColor">BaseAgent</text>
+    <text x="70" y="219.0" text-anchor="middle" fill="var(--mute)" font-size="12">abstract base</text>
+    <text x="70" y="234.0" text-anchor="middle" fill="var(--mute)" font-size="12">class</text>
+    <line x1="130" y1="206.0" x2="152" y2="206.0" stroke="var(--mute)"/>
+    <line x1="152" y1="70.0" x2="152" y2="342.0" stroke="var(--mute)"/>
+    <line x1="152" y1="70.0" x2="168" y2="70.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
+    <rect x="170" y="44" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+    <text x="186" y="66" font-weight="600" fill="currentColor">Random</text>
+    <text x="186" y="84" fill="var(--mute)" font-size="12">picks its suggestions at random</text>
+    <rect x="520" y="44" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+    <text x="575.0" y="77" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">100.7</text>
+    <line x1="152" y1="138.0" x2="168" y2="138.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
+    <rect x="170" y="112" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+    <text x="186" y="134" font-weight="600" fill="currentColor">Heuristic</text>
+    <text x="186" y="152" fill="var(--mute)" font-size="12">+ only suggests cards it hasn't seen yet</text>
+    <rect x="520" y="112" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+    <text x="575.0" y="145" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">39.8</text>
+    <line x1="152" y1="206.0" x2="168" y2="206.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
+    <rect x="170" y="180" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+    <text x="186" y="202" font-weight="600" fill="currentColor">Deductive</text>
+    <text x="186" y="220" fill="var(--mute)" font-size="12">+ deduces which cards others can hold</text>
+    <rect x="520" y="180" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+    <text x="575.0" y="213" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">16.0</text>
+    <line x1="152" y1="274.0" x2="168" y2="274.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
+    <rect x="170" y="248" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+    <text x="186" y="270" font-weight="600" fill="currentColor">Disjunctive</text>
+    <text x="186" y="288" fill="var(--mute)" font-size="12">+ uses “holds at least one of A, B or C” clues</text>
+    <rect x="520" y="248" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+    <text x="575.0" y="281" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">13.9</text>
+    <line x1="152" y1="342.0" x2="168" y2="342.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
+    <rect x="170" y="316" width="330" height="52" rx="8" fill="color-mix(in srgb,var(--acc) 14%,transparent)" stroke="var(--acc)" stroke-width="1.5"/>
+    <text x="186" y="338" font-weight="600" fill="currentColor">Entropy</text>
+    <text x="186" y="356" fill="var(--mute)" font-size="12">+ picks the most informative suggestion</text>
+    <rect x="520" y="316" width="110" height="52" rx="8" fill="color-mix(in srgb,var(--acc) 14%,transparent)" stroke="var(--acc)" stroke-width="1.5"/>
+    <text x="575.0" y="349" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">10.7</text>
 </svg>
 
 
