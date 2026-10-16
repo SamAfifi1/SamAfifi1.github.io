@@ -198,23 +198,19 @@
     It then selects the suggestion expected to reduce the remaining uncertainty the most, leading to the fastest average convergence to a solution.
 </p>
 
-<p>Checking every possible arrangement of the hidden cards is too slow to be practical, so I grouped cards with identical information profiles into <b>equivalence classes</b>.
- Two cards are interchangeable if the agent has learned exactly the same things about both, as the inherent value of learning any individual card is equal. The agent can then score one card per group instead of every card.
-This is a large saving early in the game, when most cards look identical (no or limited information), and it brought entropy turns from tens of seconds down to approx. 80ms on average.
+<p>Checking every possible arrangement of the hidden cards is too slow to be practical, 
+    so I grouped cards with identical information profiles into <b>equivalence classes</b>.
+    Two cards are interchangeable if the agent has learned exactly the same things about 
+    both, as the inherent value of learning any individual card is equal. 
+    The agent can then score one card per group instead of every card.
+</p>
 
-whilst this effect is reduced later in the game, when there are more discrete information profiles,
- the reduction in state space caused by known information and constraint propagation mitigates this by reducing the overall search space (speeding up the time taken to evaluate each suggestion).</p>
-
-
-
-<pre>def _card_fingerprint(self, card):
-    column = tuple(self.can_have[loc][card]
-                   for loc in range(GameConfig.N_PLAYERS + 1))
-    in_constraints = tuple(
-        i for i, (loc, cards) in enumerate(self.constraints)
-        if card in cards)
-    return (column, in_constraints)</pre>
-<p class="cap">Two cards with the same fingerprint are interchangeable, so only one needs evaluating.</p>
+<p> This is a large saving early in the game, when most cards look identical (no or limited information),
+     and it brought entropy turns from tens of seconds down to approx. 80ms on average. whilst this effect 
+     is reduced later in the game, when there are more discrete information profiles,
+    the reduction in state space caused by known information and constraint propagation
+     mitigates this by reducing the overall search space (speeding up the time taken to evaluate each suggestion).
+</p>
 
 <h3>Results</h3>
 
