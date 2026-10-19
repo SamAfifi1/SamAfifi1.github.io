@@ -393,6 +393,50 @@
     </div>
 </div>
 
+<p class="cap">Win rate of the single agent, with 95% confidence intervals. In a four-player game an even share is 25%.</p>
+<p>Here the entropy agent's advantage shows up. Against three deductive agents it wins 50.2%, compared with 42.7% for the disjunctive
+     agent in the same situation, and the intervals don't overlap. Even against three disjunctive agents, which are strong, it wins 
+     31.1%, above its fair share.</p>
+ 
+<h3>4. Why is the edge smaller in 2v2 games?</h3>
+<div class="tablewrap"><div class="chartbox">
+    <svg viewBox="0 0 640 172" width="100%" role="img" style="max-width:680px;color:var(--ink)" font-size="13">
+        <line x1="220.0" x2="220.0" y1="6" y2="134" stroke="var(--line)"/>
+        <text x="220.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">14%</text>
+        <line x1="299.54545454545456" x2="299.54545454545456" y1="6" y2="134" stroke="var(--line)"/>
+        <text x="299.54545454545456" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">19%</text>
+        <line x1="379.0909090909091" x2="379.0909090909091" y1="6" y2="134" stroke="var(--line)"/>
+        <text x="379.0909090909091" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">24%</text>
+        <line x1="458.6363636363636" x2="458.6363636363636" y1="6" y2="134" stroke="var(--line)"/>
+        <text x="458.6363636363636" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">29%</text>
+        <line x1="538.1818181818182" x2="538.1818181818182" y1="6" y2="134" stroke="var(--line)"/>
+        <text x="538.1818181818182" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">34%</text>
+        <line x1="363.1818181818182" x2="363.1818181818182" y1="6" y2="134" stroke="var(--mute)" stroke-dasharray="4 3"/>
+        <text x="363.1818181818182" y="166" text-anchor="middle" fill="var(--mute)" font-size="12">equal split ~23%</text>
+        <g>
+            <title>Seat straight after Entropy: 29.2% (95% CI 26.5% to 32.1%)</title>
+            <text x="208" y="28" text-anchor="end" fill="currentColor">Seat straight after Entropy</text>
+            <line x1="418.8636363636364" x2="507.95454545454544" y1="24" y2="24" stroke="var(--acc)" stroke-width="3"/>
+            <circle cx="461.8181818181818" cy="24" r="6" fill="var(--acc)" stroke="var(--card)" stroke-width="2"/>
+            <text x="515.9545454545455" y="28" fill="currentColor" font-weight="600">29.2%</text>
+        </g>
+            <g>
+                <title>Two seats after: 19.2% (95% CI 16.9% to 21.8%)</title>
+                <text x="208" y="68" text-anchor="end" fill="currentColor">Two seats after</text>
+                <line x1="266.1363636363636" x2="344.0909090909091" y1="64" y2="64" stroke="var(--mute)" stroke-width="3"/>
+                <circle cx="302.72727272727275" cy="64" r="6" fill="var(--mute)" stroke="var(--card)" stroke-width="2"/>
+                <text x="352.0909090909091" y="68" fill="currentColor" font-weight="600">19.2%</text>
+            </g>
+            <g><title>Seat straight before Entropy: 20.5% (95% CI 18.1% to 23.1%)</title>
+                <text x="208" y="108" text-anchor="end" fill="currentColor">Seat straight before Entropy</text>
+                <line x1="285.22727272727275" x2="364.77272727272725" y1="104" y2="104" stroke="var(--mute)" stroke-width="3"/>
+                <circle cx="323.40909090909093" cy="104" r="6" fill="var(--mute)" stroke="var(--card)" stroke-width="2"/>
+                <text x="372.77272727272725" y="108" fill="currentColor" font-weight="600">20.5%</text>
+            </g>
+        </svg>
+    </div>
+</div>
+
 <p class="cap">Win rate of each disjunctive agent in a game of 1 entropy and 3 disjunctive agents, by seat relative to the entropy agent.</p>
 
 <p>The agent sitting directly after the entropy agent wins 29.2% of games, against about 20% for the other two seats, and the chance
