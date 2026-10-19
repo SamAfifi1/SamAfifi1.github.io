@@ -30,3 +30,9 @@ h2{font-size:24px;margin:36px 0 10px}
 .box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
 .box h3{margin:0 0 6px;font-size:16px}.box p,.box li{color:var(--mute);margin:0;font-size:15px}.box ul{padding-left:18px;margin:0}
 footer{border-top:1px solid var(--line);margin-top:56px;padding:22px 0;color:var(--mute);font-size:14px}
+.tablewrap{overflow-x:auto;margin:8px 0}
+.chartbox{min-width:560px}
+.matrix td,.matrix th{text-align:center;white-space:nowrap}
+.matrix th[scope=row]{text-align:left}
+.matrix td.na{color:var(--mute)}
+table th[scope=row]{font-weight:600;color:inherit}
