@@ -373,21 +373,21 @@
                 <text x="198" y="28" text-anchor="end" fill="currentColor">Entropy vs 3 Deductive</text>
                 <line x1="481.0" x2="543.0" y1="24" y2="24" stroke="var(--acc)" stroke-width="3"/>
                 <circle cx="512.0" cy="24" r="6" fill="var(--acc)" stroke="var(--card)" stroke-width="2"/>
-                <text x="551.0" y="28" fill="currentColor" font-weight="600">50.2%</text>
+                <text x="551.0" y="28" fill="currentColor" font-weight="600">50.2% (CI 47.1% to 53.3%)</text>
             </g>
             <g>
                 <title>Disjunctive vs 3 Deductive: 42.7% (95% CI 39.7% to 45.8%)</title>
                 <text x="198" y="68" text-anchor="end" fill="currentColor">Disjunctive vs 3 Deductive</text>
                 <line x1="407.0" x2="467.99999999999994" y1="64" y2="64" stroke="var(--mute)" stroke-width="3"/>
                 <circle cx="437.0" cy="64" r="6" fill="var(--mute)" stroke="var(--card)" stroke-width="2"/>
-                <text x="475.99999999999994" y="68" fill="currentColor" font-weight="600">42.7%</text>
+                <text x="475.99999999999994" y="68" fill="currentColor" font-weight="600">42.7% (CI 39.7% to 45.8%)</text>
             </g>
             <g>
                 <title>Entropy vs 3 Disjunctive: 31.1% (95% CI 28.3% to 34.0%)</title>
                 <text x="198" y="108" text-anchor="end" fill="currentColor">Entropy vs 3 Disjunctive</text>
                 <line x1="293.0" x2="350.0" y1="104" y2="104" stroke="var(--acc)" stroke-width="3"/>
                 <circle cx="321.0" cy="104" r="6" fill="var(--acc)" stroke="var(--card)" stroke-width="2"/>
-                <text x="358.0" y="108" fill="currentColor" font-weight="600">31.1%</text>
+                <text x="358.0" y="108" fill="currentColor" font-weight="600">31.1% (CI 28.3% to 34.0%)</text>
             </g>
         </svg>
     </div>
@@ -418,20 +418,20 @@
             <text x="208" y="28" text-anchor="end" fill="currentColor">Seat straight after Entropy</text>
             <line x1="418.8636363636364" x2="507.95454545454544" y1="24" y2="24" stroke="var(--acc)" stroke-width="3"/>
             <circle cx="461.8181818181818" cy="24" r="6" fill="var(--acc)" stroke="var(--card)" stroke-width="2"/>
-            <text x="515.9545454545455" y="28" fill="currentColor" font-weight="600">29.2%</text>
+            <text x="515.9545454545455" y="28" fill="currentColor" font-weight="600">29.2% (CI 26.5% to 32.1%)</text>
         </g>
             <g>
                 <title>Two seats after: 19.2% (95% CI 16.9% to 21.8%)</title>
                 <text x="208" y="68" text-anchor="end" fill="currentColor">Two seats after</text>
                 <line x1="266.1363636363636" x2="344.0909090909091" y1="64" y2="64" stroke="var(--mute)" stroke-width="3"/>
                 <circle cx="302.72727272727275" cy="64" r="6" fill="var(--mute)" stroke="var(--card)" stroke-width="2"/>
-                <text x="352.0909090909091" y="68" fill="currentColor" font-weight="600">19.2%</text>
+                <text x="352.0909090909091" y="68" fill="currentColor" font-weight="600">19.2% (CI 16.9% to 21.8%)</text>
             </g>
             <g><title>Seat straight before Entropy: 20.5% (95% CI 18.1% to 23.1%)</title>
                 <text x="208" y="108" text-anchor="end" fill="currentColor">Seat straight before Entropy</text>
                 <line x1="285.22727272727275" x2="364.77272727272725" y1="104" y2="104" stroke="var(--mute)" stroke-width="3"/>
                 <circle cx="323.40909090909093" cy="104" r="6" fill="var(--mute)" stroke="var(--card)" stroke-width="2"/>
-                <text x="372.77272727272725" y="108" fill="currentColor" font-weight="600">20.5%</text>
+                <text x="372.77272727272725" y="108" fill="currentColor" font-weight="600">20.5% (CI 18.1% to 23.1%)</text>
             </g>
         </svg>
     </div>
@@ -445,13 +445,6 @@
        sits right after an entropy agent, which probably blunts its advantage there. I haven't tested this directly, so I treat it as
         a hypothesis.</p>
  
-<h3>5. The cost: speed</h3>
-<div class="tablewrap"><table><thead><tr><th>Agent</th><th>Mean time per turn</th></tr></thead><tbody>
-<tr><th scope="row">Random, Heuristic, Deductive, Disjunctive</th><td>about 0.002 ms</td></tr>
-<tr><th scope="row">Entropy (self-play)</th><td>81 ms (slowest turn 1.9 s)</td></tr>
-<tr><th scope="row">Entropy (mixed games)</th><td>91 to 93 ms (slowest turn 9.3 s)</td></tr></tbody></table></div>
-<p>The entropy agent is roughly 40,000 times slower per turn than the other inference agents. That is fine for running experiments, but it wouldn't scale to a bigger game without further work, such as sampling possible card layouts instead of listing all of them.</p>
-
 
 
 <h2>What I found, and what I'd do next</h2>
