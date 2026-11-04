@@ -1,490 +1,500 @@
 <!DOCTYPE html>
-<html lang="en-GB"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Entropy Cluedo Agent – Your Name</title><meta name="description" content="Portfolio of YOUR NAME, software developer.">
-<link rel="stylesheet" href="../style.css"></head><body>
-<header><div class="wrap"><nav><a class="brand" href="../index.html">Your Name</a>
-<div><a href="../index.html">Projects</a><a href="../about.html">About</a><a href="../assets/cv.pdf">CV</a><a href="https://github.com/YOUR-USERNAME">GitHub</a></div></nav></div></header>
-<main class="wrap">
-<a class="back" href="../index.html">← All projects</a>
+<html lang="en-GB">
+    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Entropy Cluedo Agent – Your Name</title><meta name="description" content="Portfolio of YOUR NAME, software developer.">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/include.js" defer></script>
+</head>
+
+<body>
+    <div data-include="components/header.html"></div>
+    <main class="wrap">
+    <a class="back" href="../index.html">← All projects</a>
 
 
-<h1>Entropy Cluedo Agent</h1>
-<p class="lead">A Cluedo-playing agent that picks suggestions using information theory. Candidate suggestions are ranked by entropy (expected reduction in uncertainty about the hidden cards).
-    <br><br>Deductive inference using constraint propagation techniques is used to combine partial information into a coherent game state. 
-    The agent was tested against four weaker agents over thousands of simulated games.
-</p>
+    <h1>Entropy Cluedo Agent</h1>
+    <p class="lead">A Cluedo-playing agent that picks suggestions using information theory. Candidate suggestions are ranked by entropy (expected reduction in uncertainty about the hidden cards).
+        <br><br>Deductive inference using constraint propagation techniques is used to combine partial information into a coherent game state. 
+        The agent was tested against four weaker agents over thousands of simulated games.
+    </p>
 
-<div class="btns">
-    <a class="btn p" href="https://github.com/YOUR-USERNAME/REPO-NAME">View code on GitHub</a>
-</div>
-
-<div class="tags">
-    <span class="tag">Python</span>
-    <span class="tag">Information theory</span>
-    <span class="tag">Constraint propagation</span>
-    <span class="tag">Symmetry reduction</span>
-    <span class="tag">Experimental design</span>
-</div>
-
-<h2>What I built</h2>
-<div class="two">
-    <div class="box">
-        <h3>A game engine</h3>
-        <p>A deterministic four-player Cluedo simulator using a balanced 15-card set (5 suspects, weapons & rooms). 
+    <div class="btns">
+        <a class="btn p" href="https://github.com/YOUR-USERNAME/REPO-NAME">View code on GitHub</a>
     </div>
-    <div class="box">
-        <h3>Five agents of increasing strength</h3>
-        <p>
+
+    <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Information theory</span>
+        <span class="tag">Constraint propagation</span>
+        <span class="tag">Symmetry reduction</span>
+        <span class="tag">Experimental design</span>
+    </div>
+
+    <h2>What I built</h2>
+    <div class="two">
+        <div class="box">
+            <h3>A game engine</h3>
+            <p>A deterministic four-player Cluedo simulator using a balanced 15-card set (5 suspects, weapons & rooms). 
+        </div>
+        <div class="box">
+            <h3>Five agents of increasing strength</h3>
+            <p>
+                <ul>
+                    <li><b>Random</b></li>
+                    <li><b>Heuristic</b> (suggests unseen cards)</li> 
+                    <li><b>Deductive</b> (adds inference)</li>
+                    <li><b>Disjunctive</b> (adds "has at least one of A, B or C" constraints) </li>
+                    <li><b>Entropy agent</b> scores candidate suggestions on entropy.</li>
+                </ul>
+            </p>
+        </div>
+
+
+        <div class="box">
+            <h3>An experiment framework</h3>
+            <p>A three-tier tournament (self-play, 2v2 head-to-head, 1v3 champion-vs-field) run for 1,000 games per configuration, with an analysis pipeline that generates the results below.</p>
+        </div>
+    </div>
+
+    <style>.box li b{color:var(--ink)}.box li{margin-bottom:6px}.box li:last-child{margin-bottom:0}</style>
+
+    <h2>Skills demonstrated</h2>
+    <div class="two">
+
+        <div class="box">
+            <h3>Reasoning under uncertainty</h3>
             <ul>
-                <li><b>Random</b></li>
-                <li><b>Heuristic</b> (suggests unseen cards)</li> 
-                <li><b>Deductive</b> (adds inference)</li>
-                <li><b>Disjunctive</b> (adds "has at least one of A, B or C" constraints) </li>
-                <li><b>Entropy agent</b> scores candidate suggestions on entropy.</li>
+                <li><b>Information theory:</b> Expected information gain used to choose actions.</li>
+                <li><b>Constraint propagation:</b> Deduction by combining partial, indirect evidence.</li>
+                <li><b>Probabilistic reasoning:</b> evaluating possible game states based on current information.</li>
             </ul>
-        </p>
+        </div>
+
+        <div class="box">
+            <h3>Optimisation</h3>
+            <ul>
+                <li><b>Symmetry reduction:</b> grouped interchangeable cards so far fewer cases need evaluating.</li>
+                <li><b>Efficient constraint propagation:</b> replaced python's constraint library with a custom matrix and game specific propagation logic</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h3>Experimental design and analysis</h3>
+            <ul>
+                <li><b>Controlled experiments:</b> Designed 35 matchups with 1,000 games per matchup, rotating player seats and balancing card sets to minimise experimental bias.</li>
+                <li><b>Data-driven analysis:</b> Built a pandas pipeline to process and analyse game results, comparing win rates and performance across matchups</li>
+            </ul>
+        </div>
+
     </div>
 
-
+    <h2>Challenges and decisions</h2>
     <div class="box">
-        <h3>An experiment framework</h3>
-        <p>A three-tier tournament (self-play, 2v2 head-to-head, 1v3 champion-vs-field) run for 1,000 games per configuration, with an analysis pipeline that generates the results below.</p>
-    </div>
-</div>
-
-<style>.box li b{color:var(--ink)}.box li{margin-bottom:6px}.box li:last-child{margin-bottom:0}</style>
-
-<h2>Skills demonstrated</h2>
-<div class="two">
-
-    <div class="box">
-        <h3>Reasoning under uncertainty</h3>
         <ul>
-            <li><b>Information theory:</b> Expected information gain used to choose actions.</li>
-            <li><b>Constraint propagation:</b> Deduction by combining partial, indirect evidence.</li>
-            <li><b>Probabilistic reasoning:</b> evaluating possible game states based on current information.</li>
+        <li><b>Replacing the constraint library.</b>
+            The python-constraint library was too slow: single turns on scaled-down games took minutes. I wrote a custom matrix representation with Cluedo-specific propagation rules, bringing the inference agents to around 0.002 ms per turn and making large simulations feasible.</li>
+        <li><b>Making entropy tractable.</b> 
+            Symmetry reduction through equivalence classes based on information profiles of suggestions. (cards/suggestions with equal probilities are interchangeable)</li>
+        <li><b>Fair experiments and removing bias</b>
+            Used a balanced 15-card set to remove the advantage given by having more rooms, seat rotation to remove first-turn advantage, and progressive opponent types so results weren't inflated by beating weak baselines.</li>
         </ul>
     </div>
 
-    <div class="box">
-        <h3>Optimisation</h3>
-        <ul>
-            <li><b>Symmetry reduction:</b> grouped interchangeable cards so far fewer cases need evaluating.</li>
-            <li><b>Efficient constraint propagation:</b> replaced python's constraint library with a custom matrix and game specific propagation logic</li>
-        </ul>
+    <h2>Technical detail</h2>
+
+    <h3>How it fits together</h3>
+    <svg viewBox="0 0 640 270" width="100%" role="img" style="max-width:680px;color:var(--ink)" font-size="13">
+        <defs>
+            <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0 0L8 4L0 8z" fill="var(--mute)"/>
+            </marker>
+        </defs>
+        <rect x="10" y="20" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
+        <text x="95.0" y="42" text-anchor="middle" font-weight="600" fill="currentColor">Experiment driver</text>
+        <text x="95.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">rotates seats, runs 1,000 games</text>
+        <rect x="235" y="20" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
+        <text x="320.0" y="42" text-anchor="middle" font-weight="600" fill="currentColor">Game engine</text>
+        <text x="320.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">deals, resolves suggestions</text>
+        <rect x="460" y="20" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
+        <text x="545.0" y="42" text-anchor="middle" font-weight="600" fill="currentColor">BaseAgent</text>
+        <text x="545.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">abstract base class, allowing agents to be used interchangeably</text>
+        <line x1="180" y1="52" x2="233" y2="52" stroke="var(--mute)" marker-end="url(#ar)"/>
+        <line x1="405" y1="40" x2="458" y2="40" stroke="var(--mute)" marker-end="url(#ar)"/>
+        <text x="432" y="32" text-anchor="middle" fill="var(--mute)" font-size="11">sees</text>
+        <line x1="458" y1="72" x2="407" y2="72" stroke="var(--mute)" marker-end="url(#ar)"/>
+        <text x="432" y="90" text-anchor="middle" fill="var(--mute)" font-size="11">acts</text>
+        <line x1="95" y1="84" x2="95" y2="190" stroke="var(--mute)" marker-end="url(#ar)"/>
+        <rect x="10" y="192" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
+        <text x="95.0" y="214" text-anchor="middle" font-weight="600" fill="currentColor">games.csv</text>
+        <text x="95.0" y="234" text-anchor="middle" fill="var(--mute)" font-size="12">stores experiment results</text>
+        <line x1="180" y1="224" x2="233" y2="224" stroke="var(--mute)" marker-end="url(#ar)"/>
+        <rect x="235" y="192" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
+        <text x="320.0" y="214" text-anchor="middle" font-weight="600" fill="currentColor">Analysis scripts</text>
+        <text x="320.0" y="234" text-anchor="middle" fill="var(--mute)" font-size="12">tables, win rates, seat effect</text>
+    </svg>
+
+    <p>The project separates game simulation, agent decision-making and performance analysis. 
+        An experiment driver runs batches of games, rotating player positions to reduce 
+        the effect of turn order. The game engine handles card deals and player 
+        interactions, while each agent uses the same interface to observe the game 
+        and choose actions. Results are recorded in CSV files and processed by analysis 
+        scripts, making it possible to compare agent performance across thousands of 
+        simulated games.
+    </p>
+
+    <svg viewBox="0 0 640 380" width="100%" role="img" aria-label="BaseAgent connects to five agents, each adding one capability to the one before, with mean turns to solution in self-play" style="max-width:680px;color:var(--ink)" font-size="13">
+        <defs>
+            <marker id="ar2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M0 0L8 4L0 8z" fill="var(--mute)"/>
+            </marker>
+        </defs>
+        <text x="170" y="26" fill="var(--mute)" font-size="11" font-weight="600">AGENTS, WEAKEST TO STRONGEST</text>
+        <text x="575.0" y="16" text-anchor="middle" fill="var(--mute)" font-size="11" font-weight="600">MEAN TURNS TO WIN </text>
+        <text x="575.0" y="30" text-anchor="middle" fill="var(--mute)" font-size="11" font-weight="600">(self play)</text>
+        <rect x="10" y="164.0" width="120" height="84" rx="8" fill="var(--card)" stroke="var(--line)"/>
+        <text x="70" y="200.0" text-anchor="middle" font-weight="600" fill="currentColor">BaseAgent</text>
+        <text x="70" y="219.0" text-anchor="middle" fill="var(--mute)" font-size="12">abstract base</text>
+        <text x="70" y="234.0" text-anchor="middle" fill="var(--mute)" font-size="12">class</text>
+        <line x1="130" y1="206.0" x2="152" y2="206.0" stroke="var(--mute)"/>
+        <line x1="152" y1="70.0" x2="152" y2="342.0" stroke="var(--mute)"/>
+        <line x1="152" y1="70.0" x2="168" y2="70.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
+        <rect x="170" y="44" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+        <text x="186" y="66" font-weight="600" fill="currentColor">Random</text>
+        <text x="186" y="84" fill="var(--mute)" font-size="12">picks its suggestions at random</text>
+        <rect x="520" y="44" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+        <text x="575.0" y="77" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">100.7</text>
+        <line x1="152" y1="138.0" x2="168" y2="138.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
+        <rect x="170" y="112" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+        <text x="186" y="134" font-weight="600" fill="currentColor">Heuristic</text>
+        <text x="186" y="152" fill="var(--mute)" font-size="12">+ only suggests cards it hasn't seen yet</text>
+        <rect x="520" y="112" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+        <text x="575.0" y="145" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">39.8</text>
+        <line x1="152" y1="206.0" x2="168" y2="206.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
+        <rect x="170" y="180" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+        <text x="186" y="202" font-weight="600" fill="currentColor">Deductive</text>
+        <text x="186" y="220" fill="var(--mute)" font-size="12">+ deduces which cards others can hold</text>
+        <rect x="520" y="180" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+        <text x="575.0" y="213" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">16.0</text>
+        <line x1="152" y1="274.0" x2="168" y2="274.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
+        <rect x="170" y="248" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+        <text x="186" y="270" font-weight="600" fill="currentColor">Disjunctive</text>
+        <text x="186" y="288" fill="var(--mute)" font-size="12">+ uses “holds at least one of A, B or C” clues</text>
+        <rect x="520" y="248" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
+        <text x="575.0" y="281" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">13.9</text>
+        <line x1="152" y1="342.0" x2="168" y2="342.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
+        <rect x="170" y="316" width="330" height="52" rx="8" fill="color-mix(in srgb,var(--acc) 14%,transparent)" stroke="var(--acc)" stroke-width="1.5"/>
+        <text x="186" y="338" font-weight="600" fill="currentColor">Entropy</text>
+        <text x="186" y="356" fill="var(--mute)" font-size="12">+ picks the most informative suggestion</text>
+        <rect x="520" y="316" width="110" height="52" rx="8" fill="color-mix(in srgb,var(--acc) 14%,transparent)" stroke="var(--acc)" stroke-width="1.5"/>
+        <text x="575.0" y="349" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">10.7</text>
+    </svg>
+
+    <h4>Modular agent design</h4>
+    <p>The project implements five agents using a shared abstract base class, separating agent decision-making from the game engine. 
+        This common interface makes agents interchangeable, allowing their strategies to be compared within the same 
+        environment  and without changing underlying game logic.
+    </p>
+
+
+    <h3>How the entropy agent works</h3>
+    <p>For each candidate suggestion, the agent evaluates the possible responses given what each player could still hold, and how that response would change the set of solutions still consistent with its knowledge. 
+        It then selects the suggestion expected to reduce the remaining uncertainty the most, leading to the fastest average convergence to a solution.
+    </p>
+
+    <p>Checking every possible arrangement of the hidden cards is too slow to be practical, 
+        so I grouped cards with identical information profiles into <b>equivalence classes</b>.
+        Two cards are interchangeable if the agent has learned exactly the same things about 
+        both, as the inherent value of learning any individual card is equal. 
+        The agent can then score one card per group instead of every card.
+    </p>
+
+    <p> This is a large saving early in the game, when most cards look identical (no or limited information),
+        and it brought entropy turns from tens of seconds down to approx. 80ms on average. whilst this effect 
+        is reduced later in the game, when there are more discrete information profiles,
+        the reduction in state space caused by known information and constraint propagation
+        mitigates this by reducing the overall search space (speeding up the time taken to evaluate each suggestion).
+    </p>
+
+    <h2>Results</h2>
+
+    <p>Every result below comes from 1,000 simulated games per matchup (35,000 in total), with seats rotated so no agent gets a first-turn advantage.</p>
+    
+    <h3>1. Self-play: how quickly does each agent find the answer?</h3>
+    <div class="tablewrap">
+        <div class="chartbox">
+            <svg viewBox="0 0 640 278" width="100%" role="img" aria-label="Mean turns to solution in self-play with one standard deviation whiskers" style="max-width:680px;color:var(--ink)" font-size="13">
+                <line x1="130.0" x2="130.0" y1="6" y2="236" stroke="var(--line)"/>
+                <text x="130.0" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">0</text>
+                <line x1="192.85714285714286" x2="192.85714285714286" y1="6" y2="236" stroke="var(--line)"/>
+                <text x="192.85714285714286" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">20</text>
+                <line x1="255.71428571428572" x2="255.71428571428572" y1="6" y2="236" stroke="var(--line)"/>
+                <text x="255.71428571428572" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">40</text>
+                <line x1="318.57142857142856" x2="318.57142857142856" y1="6" y2="236" stroke="var(--line)"/>
+                <text x="318.57142857142856" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">60</text>
+                <line x1="381.42857142857144" x2="381.42857142857144" y1="6" y2="236" stroke="var(--line)"/>
+                <text x="381.42857142857144" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">80</text>
+                <line x1="444.2857142857143" x2="444.2857142857143" y1="6" y2="236" stroke="var(--line)"/>
+                <text x="444.2857142857143" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">100</text>
+                <line x1="507.1428571428571" x2="507.1428571428571" y1="6" y2="236" stroke="var(--line)"/>
+                <text x="507.1428571428571" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">120</text>
+                <line x1="570.0" x2="570.0" y1="6" y2="236" stroke="var(--line)"/>
+                <text x="570.0" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">140</text>
+                <g>
+                    <title>Random: mean 100.7 turns to solution (SD 35.4), 1,000 games</title>
+                    <text x="118" y="29" text-anchor="end" fill="currentColor" font-weight="400">Random</text>
+                    <rect x="130" y="16" width="316.4" height="20" rx="3" fill="var(--mute)" opacity="0.55"/>
+                    <line x1="335.1" x2="557.7" y1="26" y2="26" stroke="var(--ink)" stroke-width="1.5"/>
+                    <line x1="557.7" x2="557.7" y1="21" y2="31" stroke="var(--ink)" stroke-width="1.5"/>
+                    <text x="565.7" y="30" fill="currentColor" font-weight="600">100.7 (SD 35.4)</text>
+                </g>
+                <g>
+                    <title>Heuristic: mean 39.8 turns to solution (SD 2.6), 1,000 games</title>
+                    <text x="118" y="73" text-anchor="end" fill="currentColor" font-weight="400">Heuristic</text>
+                    <rect x="130" y="60" width="125.1" height="20" rx="3" fill="var(--mute)" opacity="0.55"/>
+                    <line x1="246.8" x2="263.3" y1="70" y2="70" stroke="var(--ink)" stroke-width="1.5"/>
+                    <line x1="263.3" x2="263.3" y1="65" y2="75" stroke="var(--ink)" stroke-width="1.5"/>
+                    <text x="271.3" y="74" fill="currentColor" font-weight="600">39.8 (SD 2.6)</text>
+                </g>
+                <g>
+                    <title>Deductive: mean 16.0 turns to solution (SD 4.4), 1,000 games</title>
+                    <text x="118" y="117" text-anchor="end" fill="currentColor" font-weight="400">Deductive</text>
+                    <rect x="130" y="104" width="50.2" height="20" rx="3" fill="var(--mute)" opacity="0.55"/>
+                    <line x1="166.2" x2="194.2" y1="114" y2="114" stroke="var(--ink)" stroke-width="1.5"/>
+                    <line x1="194.2" x2="194.2" y1="109" y2="119" stroke="var(--ink)" stroke-width="1.5"/>
+                    <text x="202.2" y="118" fill="currentColor" font-weight="600">16.0 (SD 4.4)</text>
+                </g>
+                <g>
+                    <title>Disjunctive: mean 13.9 turns to solution (SD 3.3), 1,000 games</title>
+                    <text x="118" y="161" text-anchor="end" fill="currentColor" font-weight="400">Disjunctive</text>
+                    <rect x="130" y="148" width="43.8" height="20" rx="3" fill="var(--mute)" opacity="0.55"/>
+                    <line x1="163.5" x2="184.1" y1="158" y2="158" stroke="var(--ink)" stroke-width="1.5"/>
+                    <line x1="184.1" x2="184.1" y1="153" y2="163" stroke="var(--ink)" stroke-width="1.5"/>
+                    <text x="192.1" y="162" fill="currentColor" font-weight="600">13.9 (SD 3.3)</text>
+                </g>
+                <g>
+                    <title>Entropy: mean 10.7 turns to solution (SD 3.2), 1,000 games</title>
+                    <text x="118" y="205" text-anchor="end" fill="currentColor" font-weight="600">Entropy</text>
+                    <rect x="130" y="192" width="33.6" height="20" rx="3" fill="var(--acc)" opacity="1"/>
+                    <line x1="153.6" x2="173.5" y1="202" y2="202" stroke="var(--ink)" stroke-width="1.5"/>
+                    <line x1="173.5" x2="173.5" y1="197" y2="207" stroke="var(--ink)" stroke-width="1.5"/>
+                    <text x="181.5" y="206" fill="currentColor" font-weight="600">10.7 (SD 3.2)</text>
+                </g>
+                <text x="350.0" y="277" text-anchor="middle" fill="var(--mute)" font-size="12">mean turns to solution</text>
+            </svg>
+        </div>
+    </div>
+    <p class="cap">Four copies of the same agent per game. Bars show the mean; whiskers show one standard deviation.</p>
+    <p>Each added capability cuts the number of turns needed, and the entropy agent is fastest at 10.7 turns, against 13.9 for the next best.</p>
+    
+    <h3>2. Head to head: does finding the answer faster mean winning more?</h3>
+    <div class="tablewrap">
+        <table class="matrix">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th scope="col">Random</th>
+                    <th scope="col">Heuristic</th>
+                    <th scope="col">Deductive</th>
+                    <th scope="col">Disjunctive</th>
+                    <th scope="col">Entropy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Random</th>
+                    <td class="na">–</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
+                </tr>
+                <tr>
+                    <th scope="row">Heuristic</th>
+                    <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
+                    <td class="na">–</td><td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
+                </tr>
+                <tr>
+                    <th scope="row">Deductive</th>
+                    <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
+                    <td class="na">–</td><td style="background:color-mix(in srgb,var(--acc) 12%,transparent)">31.2%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 13%,transparent)">32.3%</td>
+                </tr>
+                <tr>
+                    <th scope="row">Disjunctive</th>
+                    <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 28%,transparent)">68.8%</td>
+                    <td class="na">–</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 19%,transparent)">48.5%</td>
+                </tr>
+                <tr>
+                    <th scope="row">Entropy</th>
+                    <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 27%,transparent)">67.7%</td>
+                    <td style="background:color-mix(in srgb,var(--acc) 21%,transparent)">51.5%</td>
+                    <td class="na">–</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <div class="box">
-        <h3>Experimental design and analysis</h3>
-        <ul>
-            <li><b>Controlled experiments:</b> Designed 35 matchups with 1,000 games per matchup, rotating player seats and balancing card sets to minimise experimental bias.</li>
-            <li><b>Data-driven analysis:</b> Built a pandas pipeline to process and analyse game results, comparing win rates and performance across matchups</li>
-        </ul>
+    <p class="cap">Row agent's win rate against the column agent in two-versus-two games. Stronger shading means more wins.</p>
+
+    <p>The weaker agents lose every game against the stronger ones. The bottom-right corner is much closer:
+        the entropy agent beats the deductive agent 67.7% of the time and the disjunctive agent 51.5% of the
+        time, but the second result is within normal variation for 1,000 games (p = 0.36), so further simulation is needed
+        to be confindent in this result.</p>
+    
+    <h3>3. One agent against three opponents</h3>
+    <div class="tablewrap">
+        <div class="chartbox">
+            <svg viewBox="0 0 640 172" width="100%" role="img" style="max-width:680px;color:var(--ink)" font-size="13">
+                <line x1="210.0" x2="210.0" y1="6" y2="134" stroke="var(--line)"/>
+                <text x="210.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">20%</text>
+                <line x1="260.0" x2="260.0" y1="6" y2="134" stroke="var(--line)"/>
+                <text x="260.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">25%</text>
+                <line x1="310.0" x2="310.0" y1="6" y2="134" stroke="var(--line)"/>
+                <text x="310.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">30%</text>
+                <line x1="360.0" x2="360.0" y1="6" y2="134" stroke="var(--line)"/>
+                <text x="360.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">35%</text>
+                <line x1="410.0" x2="410.0" y1="6" y2="134" stroke="var(--line)"/>
+                <text x="410.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">40%</text>
+                <line x1="460.0" x2="460.0" y1="6" y2="134" stroke="var(--line)"/>
+                <text x="460.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">45%</text>
+                <line x1="510.0" x2="510.0" y1="6" y2="134" stroke="var(--line)"/>
+                <text x="510.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">50%</text>
+                <line x1="560.0" x2="560.0" y1="6" y2="134" stroke="var(--line)"/>
+                <text x="560.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">55%</text>
+                <line x1="260.0" x2="260.0" y1="6" y2="134" stroke="var(--mute)" stroke-dasharray="4 3"/>
+                <text x="260.0" y="166" text-anchor="middle" fill="var(--mute)" font-size="12">even share 25%</text>
+                <g>
+                    <title>Entropy vs 3 Deductive: 50.2% (95% CI 47.1% to 53.3%)</title>
+                    <text x="198" y="28" text-anchor="end" fill="currentColor">Entropy vs 3 Deductive</text>
+                    <line x1="481.0" x2="543.0" y1="24" y2="24" stroke="var(--acc)" stroke-width="3"/>
+                    <circle cx="512.0" cy="24" r="6" fill="var(--acc)" stroke="var(--card)" stroke-width="2"/>
+                    <text x="551.0" y="28" fill="currentColor" font-weight="600">50.2% (CI 47.1% to 53.3%)</text>
+                </g>
+                <g>
+                    <title>Disjunctive vs 3 Deductive: 42.7% (95% CI 39.7% to 45.8%)</title>
+                    <text x="198" y="68" text-anchor="end" fill="currentColor">Disjunctive vs 3 Deductive</text>
+                    <line x1="407.0" x2="467.99999999999994" y1="64" y2="64" stroke="var(--mute)" stroke-width="3"/>
+                    <circle cx="437.0" cy="64" r="6" fill="var(--mute)" stroke="var(--card)" stroke-width="2"/>
+                    <text x="475.99999999999994" y="68" fill="currentColor" font-weight="600">42.7% (CI 39.7% to 45.8%)</text>
+                </g>
+                <g>
+                    <title>Entropy vs 3 Disjunctive: 31.1% (95% CI 28.3% to 34.0%)</title>
+                    <text x="198" y="108" text-anchor="end" fill="currentColor">Entropy vs 3 Disjunctive</text>
+                    <line x1="293.0" x2="350.0" y1="104" y2="104" stroke="var(--acc)" stroke-width="3"/>
+                    <circle cx="321.0" cy="104" r="6" fill="var(--acc)" stroke="var(--card)" stroke-width="2"/>
+                    <text x="358.0" y="108" fill="currentColor" font-weight="600">31.1% (CI 28.3% to 34.0%)</text>
+                </g>
+            </svg>
+        </div>
     </div>
 
-</div>
-
-<h2>Challenges and decisions</h2>
-<div class="box">
-    <ul>
-    <li><b>Replacing the constraint library.</b>
-        The python-constraint library was too slow: single turns on scaled-down games took minutes. I wrote a custom matrix representation with Cluedo-specific propagation rules, bringing the inference agents to around 0.002 ms per turn and making large simulations feasible.</li>
-    <li><b>Making entropy tractable.</b> 
-        Symmetry reduction through equivalence classes based on information profiles of suggestions. (cards/suggestions with equal probilities are interchangeable)</li>
-    <li><b>Fair experiments and removing bias</b>
-        Used a balanced 15-card set to remove the advantage given by having more rooms, seat rotation to remove first-turn advantage, and progressive opponent types so results weren't inflated by beating weak baselines.</li>
-    </ul>
-</div>
-
-<h2>Technical detail</h2>
-
-<h3>How it fits together</h3>
-<svg viewBox="0 0 640 270" width="100%" role="img" style="max-width:680px;color:var(--ink)" font-size="13">
-    <defs>
-        <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0 0L8 4L0 8z" fill="var(--mute)"/>
-        </marker>
-    </defs>
-    <rect x="10" y="20" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
-    <text x="95.0" y="42" text-anchor="middle" font-weight="600" fill="currentColor">Experiment driver</text>
-    <text x="95.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">rotates seats, runs 1,000 games</text>
-    <rect x="235" y="20" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
-    <text x="320.0" y="42" text-anchor="middle" font-weight="600" fill="currentColor">Game engine</text>
-    <text x="320.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">deals, resolves suggestions</text>
-    <rect x="460" y="20" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
-    <text x="545.0" y="42" text-anchor="middle" font-weight="600" fill="currentColor">BaseAgent</text>
-    <text x="545.0" y="62" text-anchor="middle" fill="var(--mute)" font-size="12">abstract base class, allowing agents to be used interchangeably</text>
-    <line x1="180" y1="52" x2="233" y2="52" stroke="var(--mute)" marker-end="url(#ar)"/>
-    <line x1="405" y1="40" x2="458" y2="40" stroke="var(--mute)" marker-end="url(#ar)"/>
-    <text x="432" y="32" text-anchor="middle" fill="var(--mute)" font-size="11">sees</text>
-    <line x1="458" y1="72" x2="407" y2="72" stroke="var(--mute)" marker-end="url(#ar)"/>
-    <text x="432" y="90" text-anchor="middle" fill="var(--mute)" font-size="11">acts</text>
-    <line x1="95" y1="84" x2="95" y2="190" stroke="var(--mute)" marker-end="url(#ar)"/>
-    <rect x="10" y="192" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
-    <text x="95.0" y="214" text-anchor="middle" font-weight="600" fill="currentColor">games.csv</text>
-    <text x="95.0" y="234" text-anchor="middle" fill="var(--mute)" font-size="12">stores experiment results</text>
-    <line x1="180" y1="224" x2="233" y2="224" stroke="var(--mute)" marker-end="url(#ar)"/>
-    <rect x="235" y="192" width="170" height="64" rx="8" fill="var(--card)" stroke="var(--line)"/>
-    <text x="320.0" y="214" text-anchor="middle" font-weight="600" fill="currentColor">Analysis scripts</text>
-    <text x="320.0" y="234" text-anchor="middle" fill="var(--mute)" font-size="12">tables, win rates, seat effect</text>
-</svg>
-
-<p>The project separates game simulation, agent decision-making and performance analysis. 
-    An experiment driver runs batches of games, rotating player positions to reduce 
-    the effect of turn order. The game engine handles card deals and player 
-    interactions, while each agent uses the same interface to observe the game 
-    and choose actions. Results are recorded in CSV files and processed by analysis 
-    scripts, making it possible to compare agent performance across thousands of 
-    simulated games.
-</p>
-
-<svg viewBox="0 0 640 380" width="100%" role="img" aria-label="BaseAgent connects to five agents, each adding one capability to the one before, with mean turns to solution in self-play" style="max-width:680px;color:var(--ink)" font-size="13">
-    <defs>
-        <marker id="ar2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0 0L8 4L0 8z" fill="var(--mute)"/>
-        </marker>
-    </defs>
-    <text x="170" y="26" fill="var(--mute)" font-size="11" font-weight="600">AGENTS, WEAKEST TO STRONGEST</text>
-    <text x="575.0" y="16" text-anchor="middle" fill="var(--mute)" font-size="11" font-weight="600">MEAN TURNS TO WIN </text>
-    <text x="575.0" y="30" text-anchor="middle" fill="var(--mute)" font-size="11" font-weight="600">(self play)</text>
-    <rect x="10" y="164.0" width="120" height="84" rx="8" fill="var(--card)" stroke="var(--line)"/>
-    <text x="70" y="200.0" text-anchor="middle" font-weight="600" fill="currentColor">BaseAgent</text>
-    <text x="70" y="219.0" text-anchor="middle" fill="var(--mute)" font-size="12">abstract base</text>
-    <text x="70" y="234.0" text-anchor="middle" fill="var(--mute)" font-size="12">class</text>
-    <line x1="130" y1="206.0" x2="152" y2="206.0" stroke="var(--mute)"/>
-    <line x1="152" y1="70.0" x2="152" y2="342.0" stroke="var(--mute)"/>
-    <line x1="152" y1="70.0" x2="168" y2="70.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
-    <rect x="170" y="44" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
-    <text x="186" y="66" font-weight="600" fill="currentColor">Random</text>
-    <text x="186" y="84" fill="var(--mute)" font-size="12">picks its suggestions at random</text>
-    <rect x="520" y="44" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
-    <text x="575.0" y="77" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">100.7</text>
-    <line x1="152" y1="138.0" x2="168" y2="138.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
-    <rect x="170" y="112" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
-    <text x="186" y="134" font-weight="600" fill="currentColor">Heuristic</text>
-    <text x="186" y="152" fill="var(--mute)" font-size="12">+ only suggests cards it hasn't seen yet</text>
-    <rect x="520" y="112" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
-    <text x="575.0" y="145" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">39.8</text>
-    <line x1="152" y1="206.0" x2="168" y2="206.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
-    <rect x="170" y="180" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
-    <text x="186" y="202" font-weight="600" fill="currentColor">Deductive</text>
-    <text x="186" y="220" fill="var(--mute)" font-size="12">+ deduces which cards others can hold</text>
-    <rect x="520" y="180" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
-    <text x="575.0" y="213" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">16.0</text>
-    <line x1="152" y1="274.0" x2="168" y2="274.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
-    <rect x="170" y="248" width="330" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
-    <text x="186" y="270" font-weight="600" fill="currentColor">Disjunctive</text>
-    <text x="186" y="288" fill="var(--mute)" font-size="12">+ uses “holds at least one of A, B or C” clues</text>
-    <rect x="520" y="248" width="110" height="52" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1"/>
-    <text x="575.0" y="281" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">13.9</text>
-    <line x1="152" y1="342.0" x2="168" y2="342.0" stroke="var(--mute)" marker-end="url(#ar2)"/>
-    <rect x="170" y="316" width="330" height="52" rx="8" fill="color-mix(in srgb,var(--acc) 14%,transparent)" stroke="var(--acc)" stroke-width="1.5"/>
-    <text x="186" y="338" font-weight="600" fill="currentColor">Entropy</text>
-    <text x="186" y="356" fill="var(--mute)" font-size="12">+ picks the most informative suggestion</text>
-    <rect x="520" y="316" width="110" height="52" rx="8" fill="color-mix(in srgb,var(--acc) 14%,transparent)" stroke="var(--acc)" stroke-width="1.5"/>
-    <text x="575.0" y="349" text-anchor="middle" font-weight="600" font-size="18" fill="currentColor">10.7</text>
-</svg>
-
-<h4>Modular agent design</h4>
-<p>The project implements five agents using a shared base class, separating agent decision-making from the game engine. 
-    This common interface makes agents interchangeable, allowing their strategies to be compared within the same 
-    environment  and without changing underlying game logic.
-</p>
-
-
-<h3>How the entropy agent works</h3>
-<p>For each candidate suggestion, the agent evaluates the possible responses given what each player could still hold, and how that response would change the set of solutions still consistent with its knowledge. 
-    It then selects the suggestion expected to reduce the remaining uncertainty the most, leading to the fastest average convergence to a solution.
-</p>
-
-<p>Checking every possible arrangement of the hidden cards is too slow to be practical, 
-    so I grouped cards with identical information profiles into <b>equivalence classes</b>.
-    Two cards are interchangeable if the agent has learned exactly the same things about 
-    both, as the inherent value of learning any individual card is equal. 
-    The agent can then score one card per group instead of every card.
-</p>
-
-<p> This is a large saving early in the game, when most cards look identical (no or limited information),
-     and it brought entropy turns from tens of seconds down to approx. 80ms on average. whilst this effect 
-     is reduced later in the game, when there are more discrete information profiles,
-    the reduction in state space caused by known information and constraint propagation
-     mitigates this by reducing the overall search space (speeding up the time taken to evaluate each suggestion).
-</p>
-
-<h2>Results</h2>
-
-<p>Every result below comes from 1,000 simulated games per matchup (35,000 in total), with seats rotated so no agent gets a first-turn advantage.</p>
- 
-<h3>1. Self-play: how quickly does each agent find the answer?</h3>
-<div class="tablewrap">
-    <div class="chartbox">
-        <svg viewBox="0 0 640 278" width="100%" role="img" aria-label="Mean turns to solution in self-play with one standard deviation whiskers" style="max-width:680px;color:var(--ink)" font-size="13">
-            <line x1="130.0" x2="130.0" y1="6" y2="236" stroke="var(--line)"/>
-            <text x="130.0" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">0</text>
-            <line x1="192.85714285714286" x2="192.85714285714286" y1="6" y2="236" stroke="var(--line)"/>
-            <text x="192.85714285714286" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">20</text>
-            <line x1="255.71428571428572" x2="255.71428571428572" y1="6" y2="236" stroke="var(--line)"/>
-            <text x="255.71428571428572" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">40</text>
-            <line x1="318.57142857142856" x2="318.57142857142856" y1="6" y2="236" stroke="var(--line)"/>
-            <text x="318.57142857142856" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">60</text>
-            <line x1="381.42857142857144" x2="381.42857142857144" y1="6" y2="236" stroke="var(--line)"/>
-            <text x="381.42857142857144" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">80</text>
-            <line x1="444.2857142857143" x2="444.2857142857143" y1="6" y2="236" stroke="var(--line)"/>
-            <text x="444.2857142857143" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">100</text>
-            <line x1="507.1428571428571" x2="507.1428571428571" y1="6" y2="236" stroke="var(--line)"/>
-            <text x="507.1428571428571" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">120</text>
-            <line x1="570.0" x2="570.0" y1="6" y2="236" stroke="var(--line)"/>
-            <text x="570.0" y="252" text-anchor="middle" fill="var(--mute)" font-size="12">140</text>
-            <g>
-                <title>Random: mean 100.7 turns to solution (SD 35.4), 1,000 games</title>
-                <text x="118" y="29" text-anchor="end" fill="currentColor" font-weight="400">Random</text>
-                <rect x="130" y="16" width="316.4" height="20" rx="3" fill="var(--mute)" opacity="0.55"/>
-                <line x1="335.1" x2="557.7" y1="26" y2="26" stroke="var(--ink)" stroke-width="1.5"/>
-                <line x1="557.7" x2="557.7" y1="21" y2="31" stroke="var(--ink)" stroke-width="1.5"/>
-                <text x="565.7" y="30" fill="currentColor" font-weight="600">100.7 (SD 35.4)</text>
-            </g>
-            <g>
-                <title>Heuristic: mean 39.8 turns to solution (SD 2.6), 1,000 games</title>
-                <text x="118" y="73" text-anchor="end" fill="currentColor" font-weight="400">Heuristic</text>
-                <rect x="130" y="60" width="125.1" height="20" rx="3" fill="var(--mute)" opacity="0.55"/>
-                <line x1="246.8" x2="263.3" y1="70" y2="70" stroke="var(--ink)" stroke-width="1.5"/>
-                <line x1="263.3" x2="263.3" y1="65" y2="75" stroke="var(--ink)" stroke-width="1.5"/>
-                <text x="271.3" y="74" fill="currentColor" font-weight="600">39.8 (SD 2.6)</text>
-            </g>
-            <g>
-                <title>Deductive: mean 16.0 turns to solution (SD 4.4), 1,000 games</title>
-                <text x="118" y="117" text-anchor="end" fill="currentColor" font-weight="400">Deductive</text>
-                <rect x="130" y="104" width="50.2" height="20" rx="3" fill="var(--mute)" opacity="0.55"/>
-                <line x1="166.2" x2="194.2" y1="114" y2="114" stroke="var(--ink)" stroke-width="1.5"/>
-                <line x1="194.2" x2="194.2" y1="109" y2="119" stroke="var(--ink)" stroke-width="1.5"/>
-                <text x="202.2" y="118" fill="currentColor" font-weight="600">16.0 (SD 4.4)</text>
-            </g>
-            <g>
-                <title>Disjunctive: mean 13.9 turns to solution (SD 3.3), 1,000 games</title>
-                <text x="118" y="161" text-anchor="end" fill="currentColor" font-weight="400">Disjunctive</text>
-                <rect x="130" y="148" width="43.8" height="20" rx="3" fill="var(--mute)" opacity="0.55"/>
-                <line x1="163.5" x2="184.1" y1="158" y2="158" stroke="var(--ink)" stroke-width="1.5"/>
-                <line x1="184.1" x2="184.1" y1="153" y2="163" stroke="var(--ink)" stroke-width="1.5"/>
-                <text x="192.1" y="162" fill="currentColor" font-weight="600">13.9 (SD 3.3)</text>
-            </g>
-            <g>
-                <title>Entropy: mean 10.7 turns to solution (SD 3.2), 1,000 games</title>
-                <text x="118" y="205" text-anchor="end" fill="currentColor" font-weight="600">Entropy</text>
-                <rect x="130" y="192" width="33.6" height="20" rx="3" fill="var(--acc)" opacity="1"/>
-                <line x1="153.6" x2="173.5" y1="202" y2="202" stroke="var(--ink)" stroke-width="1.5"/>
-                <line x1="173.5" x2="173.5" y1="197" y2="207" stroke="var(--ink)" stroke-width="1.5"/>
-                <text x="181.5" y="206" fill="currentColor" font-weight="600">10.7 (SD 3.2)</text>
-            </g>
-            <text x="350.0" y="277" text-anchor="middle" fill="var(--mute)" font-size="12">mean turns to solution</text>
-        </svg>
-    </div>
-</div>
-<p class="cap">Four copies of the same agent per game. Bars show the mean; whiskers show one standard deviation.</p>
-<p>Each added capability cuts the number of turns needed, and the entropy agent is fastest at 10.7 turns, against 13.9 for the next best.</p>
- 
-<h3>2. Head to head: does finding the answer faster mean winning more?</h3>
-<div class="tablewrap">
-    <table class="matrix">
-        <thead>
-            <tr>
-                <th></th>
-                <th scope="col">Random</th>
-                <th scope="col">Heuristic</th>
-                <th scope="col">Deductive</th>
-                <th scope="col">Disjunctive</th>
-                <th scope="col">Entropy</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Random</th>
-                <td class="na">–</td>
-                <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
-            </tr>
-            <tr>
-                <th scope="row">Heuristic</th>
-                <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
-                <td class="na">–</td><td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 0%,transparent)">0.0%</td>
-            </tr>
-            <tr>
-                <th scope="row">Deductive</th>
-                <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
-                <td class="na">–</td><td style="background:color-mix(in srgb,var(--acc) 12%,transparent)">31.2%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 13%,transparent)">32.3%</td>
-            </tr>
-            <tr>
-                <th scope="row">Disjunctive</th>
-                <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 28%,transparent)">68.8%</td>
-                <td class="na">–</td>
-                <td style="background:color-mix(in srgb,var(--acc) 19%,transparent)">48.5%</td>
-            </tr>
-            <tr>
-                <th scope="row">Entropy</th>
-                <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 40%,transparent)">100.0%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 27%,transparent)">67.7%</td>
-                <td style="background:color-mix(in srgb,var(--acc) 21%,transparent)">51.5%</td>
-                <td class="na">–</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<p class="cap">Row agent's win rate against the column agent in two-versus-two games. Stronger shading means more wins.</p>
-
-<p>The weaker agents lose every game against the stronger ones. The bottom-right corner is much closer:
-     the entropy agent beats the deductive agent 67.7% of the time and the disjunctive agent 51.5% of the
-      time, but the second result is within normal variation for 1,000 games (p = 0.36), so further simulation is needed
-      to be confindent in this result.</p>
- 
-<h3>3. One agent against three opponents</h3>
-<div class="tablewrap">
-    <div class="chartbox">
+    <p class="cap">Win rate of the single agent, with 95% confidence intervals. In a four-player game an even share is 25%.</p>
+    <p>Here the entropy agent's advantage shows up. Against three deductive agents it wins 50.2%, compared with 42.7% for the disjunctive
+        agent in the same situation, and the intervals don't overlap. Even against three disjunctive agents, which are strong, it wins 
+        31.1%, above its fair share.</p>
+    
+    <h3>4. Why is the edge smaller in 2v2 games?</h3>
+    <div class="tablewrap"><div class="chartbox">
         <svg viewBox="0 0 640 172" width="100%" role="img" style="max-width:680px;color:var(--ink)" font-size="13">
-            <line x1="210.0" x2="210.0" y1="6" y2="134" stroke="var(--line)"/>
-            <text x="210.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">20%</text>
-            <line x1="260.0" x2="260.0" y1="6" y2="134" stroke="var(--line)"/>
-            <text x="260.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">25%</text>
-            <line x1="310.0" x2="310.0" y1="6" y2="134" stroke="var(--line)"/>
-            <text x="310.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">30%</text>
-            <line x1="360.0" x2="360.0" y1="6" y2="134" stroke="var(--line)"/>
-            <text x="360.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">35%</text>
-            <line x1="410.0" x2="410.0" y1="6" y2="134" stroke="var(--line)"/>
-            <text x="410.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">40%</text>
-            <line x1="460.0" x2="460.0" y1="6" y2="134" stroke="var(--line)"/>
-            <text x="460.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">45%</text>
-            <line x1="510.0" x2="510.0" y1="6" y2="134" stroke="var(--line)"/>
-            <text x="510.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">50%</text>
-            <line x1="560.0" x2="560.0" y1="6" y2="134" stroke="var(--line)"/>
-            <text x="560.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">55%</text>
-            <line x1="260.0" x2="260.0" y1="6" y2="134" stroke="var(--mute)" stroke-dasharray="4 3"/>
-            <text x="260.0" y="166" text-anchor="middle" fill="var(--mute)" font-size="12">even share 25%</text>
+            <line x1="220.0" x2="220.0" y1="6" y2="134" stroke="var(--line)"/>
+            <text x="220.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">14%</text>
+            <line x1="299.54545454545456" x2="299.54545454545456" y1="6" y2="134" stroke="var(--line)"/>
+            <text x="299.54545454545456" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">19%</text>
+            <line x1="379.0909090909091" x2="379.0909090909091" y1="6" y2="134" stroke="var(--line)"/>
+            <text x="379.0909090909091" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">24%</text>
+            <line x1="458.6363636363636" x2="458.6363636363636" y1="6" y2="134" stroke="var(--line)"/>
+            <text x="458.6363636363636" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">29%</text>
+            <line x1="538.1818181818182" x2="538.1818181818182" y1="6" y2="134" stroke="var(--line)"/>
+            <text x="538.1818181818182" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">34%</text>
+            <line x1="363.1818181818182" x2="363.1818181818182" y1="6" y2="134" stroke="var(--mute)" stroke-dasharray="4 3"/>
+            <text x="363.1818181818182" y="166" text-anchor="middle" fill="var(--mute)" font-size="12">equal split ~23%</text>
             <g>
-                <title>Entropy vs 3 Deductive: 50.2% (95% CI 47.1% to 53.3%)</title>
-                <text x="198" y="28" text-anchor="end" fill="currentColor">Entropy vs 3 Deductive</text>
-                <line x1="481.0" x2="543.0" y1="24" y2="24" stroke="var(--acc)" stroke-width="3"/>
-                <circle cx="512.0" cy="24" r="6" fill="var(--acc)" stroke="var(--card)" stroke-width="2"/>
-                <text x="551.0" y="28" fill="currentColor" font-weight="600">50.2% (CI 47.1% to 53.3%)</text>
+                <title>Seat straight after Entropy: 29.2% (95% CI 26.5% to 32.1%)</title>
+                <text x="208" y="28" text-anchor="end" fill="currentColor">Seat straight after Entropy</text>
+                <line x1="418.8636363636364" x2="507.95454545454544" y1="24" y2="24" stroke="var(--acc)" stroke-width="3"/>
+                <circle cx="461.8181818181818" cy="24" r="6" fill="var(--acc)" stroke="var(--card)" stroke-width="2"/>
+                <text x="515.9545454545455" y="28" fill="currentColor" font-weight="600">29.2% (CI 26.5% to 32.1%)</text>
             </g>
-            <g>
-                <title>Disjunctive vs 3 Deductive: 42.7% (95% CI 39.7% to 45.8%)</title>
-                <text x="198" y="68" text-anchor="end" fill="currentColor">Disjunctive vs 3 Deductive</text>
-                <line x1="407.0" x2="467.99999999999994" y1="64" y2="64" stroke="var(--mute)" stroke-width="3"/>
-                <circle cx="437.0" cy="64" r="6" fill="var(--mute)" stroke="var(--card)" stroke-width="2"/>
-                <text x="475.99999999999994" y="68" fill="currentColor" font-weight="600">42.7% (CI 39.7% to 45.8%)</text>
-            </g>
-            <g>
-                <title>Entropy vs 3 Disjunctive: 31.1% (95% CI 28.3% to 34.0%)</title>
-                <text x="198" y="108" text-anchor="end" fill="currentColor">Entropy vs 3 Disjunctive</text>
-                <line x1="293.0" x2="350.0" y1="104" y2="104" stroke="var(--acc)" stroke-width="3"/>
-                <circle cx="321.0" cy="104" r="6" fill="var(--acc)" stroke="var(--card)" stroke-width="2"/>
-                <text x="358.0" y="108" fill="currentColor" font-weight="600">31.1% (CI 28.3% to 34.0%)</text>
-            </g>
-        </svg>
+                <g>
+                    <title>Two seats after: 19.2% (95% CI 16.9% to 21.8%)</title>
+                    <text x="208" y="68" text-anchor="end" fill="currentColor">Two seats after</text>
+                    <line x1="266.1363636363636" x2="344.0909090909091" y1="64" y2="64" stroke="var(--mute)" stroke-width="3"/>
+                    <circle cx="302.72727272727275" cy="64" r="6" fill="var(--mute)" stroke="var(--card)" stroke-width="2"/>
+                    <text x="352.0909090909091" y="68" fill="currentColor" font-weight="600">19.2% (CI 16.9% to 21.8%)</text>
+                </g>
+                <g><title>Seat straight before Entropy: 20.5% (95% CI 18.1% to 23.1%)</title>
+                    <text x="208" y="108" text-anchor="end" fill="currentColor">Seat straight before Entropy</text>
+                    <line x1="285.22727272727275" x2="364.77272727272725" y1="104" y2="104" stroke="var(--mute)" stroke-width="3"/>
+                    <circle cx="323.40909090909093" cy="104" r="6" fill="var(--mute)" stroke="var(--card)" stroke-width="2"/>
+                    <text x="372.77272727272725" y="108" fill="currentColor" font-weight="600">20.5% (CI 18.1% to 23.1%)</text>
+                </g>
+            </svg>
+        </div>
     </div>
-</div>
 
-<p class="cap">Win rate of the single agent, with 95% confidence intervals. In a four-player game an even share is 25%.</p>
-<p>Here the entropy agent's advantage shows up. Against three deductive agents it wins 50.2%, compared with 42.7% for the disjunctive
-     agent in the same situation, and the intervals don't overlap. Even against three disjunctive agents, which are strong, it wins 
-     31.1%, above its fair share.</p>
- 
-<h3>4. Why is the edge smaller in 2v2 games?</h3>
-<div class="tablewrap"><div class="chartbox">
-    <svg viewBox="0 0 640 172" width="100%" role="img" style="max-width:680px;color:var(--ink)" font-size="13">
-        <line x1="220.0" x2="220.0" y1="6" y2="134" stroke="var(--line)"/>
-        <text x="220.0" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">14%</text>
-        <line x1="299.54545454545456" x2="299.54545454545456" y1="6" y2="134" stroke="var(--line)"/>
-        <text x="299.54545454545456" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">19%</text>
-        <line x1="379.0909090909091" x2="379.0909090909091" y1="6" y2="134" stroke="var(--line)"/>
-        <text x="379.0909090909091" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">24%</text>
-        <line x1="458.6363636363636" x2="458.6363636363636" y1="6" y2="134" stroke="var(--line)"/>
-        <text x="458.6363636363636" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">29%</text>
-        <line x1="538.1818181818182" x2="538.1818181818182" y1="6" y2="134" stroke="var(--line)"/>
-        <text x="538.1818181818182" y="150" text-anchor="middle" fill="var(--mute)" font-size="12">34%</text>
-        <line x1="363.1818181818182" x2="363.1818181818182" y1="6" y2="134" stroke="var(--mute)" stroke-dasharray="4 3"/>
-        <text x="363.1818181818182" y="166" text-anchor="middle" fill="var(--mute)" font-size="12">equal split ~23%</text>
-        <g>
-            <title>Seat straight after Entropy: 29.2% (95% CI 26.5% to 32.1%)</title>
-            <text x="208" y="28" text-anchor="end" fill="currentColor">Seat straight after Entropy</text>
-            <line x1="418.8636363636364" x2="507.95454545454544" y1="24" y2="24" stroke="var(--acc)" stroke-width="3"/>
-            <circle cx="461.8181818181818" cy="24" r="6" fill="var(--acc)" stroke="var(--card)" stroke-width="2"/>
-            <text x="515.9545454545455" y="28" fill="currentColor" font-weight="600">29.2% (CI 26.5% to 32.1%)</text>
-        </g>
-            <g>
-                <title>Two seats after: 19.2% (95% CI 16.9% to 21.8%)</title>
-                <text x="208" y="68" text-anchor="end" fill="currentColor">Two seats after</text>
-                <line x1="266.1363636363636" x2="344.0909090909091" y1="64" y2="64" stroke="var(--mute)" stroke-width="3"/>
-                <circle cx="302.72727272727275" cy="64" r="6" fill="var(--mute)" stroke="var(--card)" stroke-width="2"/>
-                <text x="352.0909090909091" y="68" fill="currentColor" font-weight="600">19.2% (CI 16.9% to 21.8%)</text>
-            </g>
-            <g><title>Seat straight before Entropy: 20.5% (95% CI 18.1% to 23.1%)</title>
-                <text x="208" y="108" text-anchor="end" fill="currentColor">Seat straight before Entropy</text>
-                <line x1="285.22727272727275" x2="364.77272727272725" y1="104" y2="104" stroke="var(--mute)" stroke-width="3"/>
-                <circle cx="323.40909090909093" cy="104" r="6" fill="var(--mute)" stroke="var(--card)" stroke-width="2"/>
-                <text x="372.77272727272725" y="108" fill="currentColor" font-weight="600">20.5% (CI 18.1% to 23.1%)</text>
-            </g>
-        </svg>
-    </div>
-</div>
+    <p class="cap">Win rate of each disjunctive agent in a game of 1 entropy and 3 disjunctive agents, by seat relative to the entropy agent.</p>
 
-<p class="cap">Win rate of each disjunctive agent in a game of 1 entropy and 3 disjunctive agents, by seat relative to the entropy agent.</p>
-
-<p>The agent sitting directly after the entropy agent wins 29.2% of games, against about 20% for the other two seats, and the chance
-     of a gap this large arising by luck is below 1 in 100,000. My explanation is that suggestions are partly public: an opponent who
-      acts straight after can use what the entropy agent has just revealed, and accuse first. In 2v2 games a disjunctive agent always
-       sits right after an entropy agent, which probably blunts its advantage there. I haven't tested this directly, so I treat it as
-        a hypothesis.</p>
- 
+    <p>The agent sitting directly after the entropy agent wins 29.2% of games, against about 20% for the other two seats, and the chance
+        of a gap this large arising by luck is below 1 in 100,000. My explanation is that suggestions are partly public: an opponent who
+        acts straight after can use what the entropy agent has just revealed, and accuse first. In 2v2 games a disjunctive agent always
+        sits right after an entropy agent, which probably blunts its advantage there. I haven't tested this directly, so I treat it as
+            a hypothesis.</p>
+    
 
 
-<h2>What I found, and what I'd do next</h2>
-<p>If the entropy agent chooses more informative suggestions, why doesn't its edge show up as clearly in 2v2 games? 
-    My hypothesis is that suggestions are semi-public: other agents learn from them too, so in information-rich games 
-    the quality of inference matters more than the quality of suggestions. The seat-order data supports this. When the 
-    entropy agent faced three disjunctive agents, the one sitting immediately after it won 29.2% of games, against 19.2% 
-    nd 20.5% for the other two seats. That gap is very unlikely to be chance (p &lt; 0.001).
-</p>
-<svg viewBox="0 0 620 164" width="100%" role="img" style="max-width:640px;color:var(--ink)" font-size="13">
-    <line x1="200.0" x2="200.0" y1="8" y2="134" stroke="var(--line)"/>
-    <text x="200.0" y="152" text-anchor="middle" fill="var(--mute)">14%</text>
-    <line x1="290.9090909090909" x2="290.9090909090909" y1="8" y2="134" stroke="var(--line)"/>
-    <text x="290.9090909090909" y="152" text-anchor="middle" fill="var(--mute)">19%</text>
-    <line x1="381.8181818181818" x2="381.8181818181818" y1="8" y2="134" stroke="var(--line)"/>
-    <text x="381.8181818181818" y="152" text-anchor="middle" fill="var(--mute)">24%</text>
-    <line x1="472.7272727272727" x2="472.7272727272727" y1="8" y2="134" stroke="var(--line)"/>
-    <text x="472.7272727272727" y="152" text-anchor="middle" fill="var(--mute)">29%</text>
-    <line x1="563.6363636363636" x2="563.6363636363636" y1="8" y2="134" stroke="var(--line)"/>
-    <text x="563.6363636363636" y="152" text-anchor="middle" fill="var(--mute)">34%</text>
-    <line x1="363.6363636363636" x2="363.6363636363636" y1="8" y2="134" stroke="var(--mute)" stroke-dasharray="4 3"/>
-    <text x="363.6363636363636" y="163" text-anchor="middle" fill="var(--mute)" font-size="12">equal split ~23%</text>
-    <text x="188" y="32" text-anchor="end" fill="currentColor">Seat just after Entropy</text>
-    <line x1="427.27272727272725" x2="529.0909090909091" y1="28" y2="28" stroke="var(--acc)" stroke-width="3"/>
-    <circle cx="476.3636363636364" cy="28" r="6" fill="var(--acc)"/>
-    <text x="537.0909090909091" y="32" fill="currentColor">29.2%</text>
-    <text x="188" y="72" text-anchor="end" fill="currentColor">Two seats after</text>
-    <line x1="252.7272727272727" x2="341.8181818181818" y1="68" y2="68" stroke="var(--mute)" stroke-width="3"/>
-    <circle cx="294.5454545454545" cy="68" r="6" fill="var(--mute)"/>
-    <text x="349.8181818181818" y="72" fill="currentColor">19.2%</text>
-    <text x="188" y="112" text-anchor="end" fill="currentColor">Seat just before Entropy</text>
-    <line x1="274.54545454545456" x2="365.4545454545455" y1="108" y2="108" stroke="var(--mute)" stroke-width="3"/>
-    <circle cx="318.1818181818182" cy="108" r="6" fill="var(--mute)"/>
-    <text x="373.4545454545455" y="112" fill="currentColor">20.5%</text>
-</svg>
+    <h2>What I found, and what I'd do next</h2>
+    <p>If the entropy agent chooses more informative suggestions, why doesn't its edge show up as clearly in 2v2 games? 
+        My hypothesis is that suggestions are semi-public: other agents learn from them too, so in information-rich games 
+        the quality of inference matters more than the quality of suggestions. The seat-order data supports this. When the 
+        entropy agent faced three disjunctive agents, the one sitting immediately after it won 29.2% of games, against 19.2% 
+        nd 20.5% for the other two seats. That gap is very unlikely to be chance (p &lt; 0.001).
+    </p>
+    <svg viewBox="0 0 620 164" width="100%" role="img" style="max-width:640px;color:var(--ink)" font-size="13">
+        <line x1="200.0" x2="200.0" y1="8" y2="134" stroke="var(--line)"/>
+        <text x="200.0" y="152" text-anchor="middle" fill="var(--mute)">14%</text>
+        <line x1="290.9090909090909" x2="290.9090909090909" y1="8" y2="134" stroke="var(--line)"/>
+        <text x="290.9090909090909" y="152" text-anchor="middle" fill="var(--mute)">19%</text>
+        <line x1="381.8181818181818" x2="381.8181818181818" y1="8" y2="134" stroke="var(--line)"/>
+        <text x="381.8181818181818" y="152" text-anchor="middle" fill="var(--mute)">24%</text>
+        <line x1="472.7272727272727" x2="472.7272727272727" y1="8" y2="134" stroke="var(--line)"/>
+        <text x="472.7272727272727" y="152" text-anchor="middle" fill="var(--mute)">29%</text>
+        <line x1="563.6363636363636" x2="563.6363636363636" y1="8" y2="134" stroke="var(--line)"/>
+        <text x="563.6363636363636" y="152" text-anchor="middle" fill="var(--mute)">34%</text>
+        <line x1="363.6363636363636" x2="363.6363636363636" y1="8" y2="134" stroke="var(--mute)" stroke-dasharray="4 3"/>
+        <text x="363.6363636363636" y="163" text-anchor="middle" fill="var(--mute)" font-size="12">equal split ~23%</text>
+        <text x="188" y="32" text-anchor="end" fill="currentColor">Seat just after Entropy</text>
+        <line x1="427.27272727272725" x2="529.0909090909091" y1="28" y2="28" stroke="var(--acc)" stroke-width="3"/>
+        <circle cx="476.3636363636364" cy="28" r="6" fill="var(--acc)"/>
+        <text x="537.0909090909091" y="32" fill="currentColor">29.2%</text>
+        <text x="188" y="72" text-anchor="end" fill="currentColor">Two seats after</text>
+        <line x1="252.7272727272727" x2="341.8181818181818" y1="68" y2="68" stroke="var(--mute)" stroke-width="3"/>
+        <circle cx="294.5454545454545" cy="68" r="6" fill="var(--mute)"/>
+        <text x="349.8181818181818" y="72" fill="currentColor">19.2%</text>
+        <text x="188" y="112" text-anchor="end" fill="currentColor">Seat just before Entropy</text>
+        <line x1="274.54545454545456" x2="365.4545454545455" y1="108" y2="108" stroke="var(--mute)" stroke-width="3"/>
+        <circle cx="318.1818181818182" cy="108" r="6" fill="var(--mute)"/>
+        <text x="373.4545454545455" y="112" fill="currentColor">20.5%</text>
+    </svg>
 
-<div class="box"><ul>
-<li>The entropy agent is tens of thousands of times slower per turn than the other inference agents, so it may not be worth it for real-time play, and exhaustive enumeration won't scale to bigger games.</li>
-<li>Next steps: sample worlds rather than enumerating all of them, move the heavy enumeration into a compiled language, and try risk-aware or game-theoretic suggestions that gain information without leaking it to opponents.</li></ul></div>
+    <div class="box"><ul>
+    <li>The entropy agent is tens of thousands of times slower per turn than the other inference agents, so it may not be worth it for real-time play, and exhaustive enumeration won't scale to bigger games.</li>
+    <li>Next steps: sample worlds rather than enumerating all of them, move the heavy enumeration into a compiled language, and try risk-aware or game-theoretic suggestions that gain information without leaking it to opponents.</li></ul></div>
 
-</main>
-<footer><div class="wrap">your.email@example.com · <a href="https://github.com/YOUR-USERNAME">GitHub</a> · <a href="https://linkedin.com/in/YOUR-NAME">LinkedIn</a> · <a href="../assets/cv.pdf">CV (PDF)</a></div></footer>
-</body></html>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+</body>
+
+</html>
